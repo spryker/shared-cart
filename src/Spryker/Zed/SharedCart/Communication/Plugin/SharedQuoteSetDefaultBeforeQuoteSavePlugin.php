@@ -12,10 +12,11 @@ use Spryker\Zed\Kernel\Communication\AbstractPlugin;
 use Spryker\Zed\QuoteExtension\Dependency\Plugin\QuoteWritePluginInterface;
 
 /**
- * @method \Spryker\Zed\SharedCart\Business\SharedCartFacadeInterface getFacade()
  * @method \Spryker\Zed\SharedCart\Communication\SharedCartCommunicationFactory getFactory()
+ * @method \Spryker\Zed\SharedCart\Business\SharedCartFacadeInterface getFacade()
+ * @method \Spryker\Zed\SharedCart\SharedCartConfig getConfig()
  */
-class UpdateShareDetailsQuoteAfterSavePlugin extends AbstractPlugin implements QuoteWritePluginInterface
+class SharedQuoteSetDefaultBeforeQuoteSavePlugin extends AbstractPlugin implements QuoteWritePluginInterface
 {
     /**
      * @api
@@ -26,11 +27,14 @@ class UpdateShareDetailsQuoteAfterSavePlugin extends AbstractPlugin implements Q
      */
     public function execute(QuoteTransfer $quoteTransfer): QuoteTransfer
     {
-        if (!$quoteTransfer->isPropertyModified(QuoteTransfer::SHARE_DETAILS) || !$this->isCustomerQuoteOwner($quoteTransfer)) {
+        if (!$quoteTransfer->getIsDefault()
+            || !$quoteTransfer->getCustomer()->getCompanyUserTransfer()
+            || $this->isCustomerQuoteOwner($quoteTransfer)
+        ) {
             return $quoteTransfer;
         }
 
-        return $this->getFacade()->updateQuoteShareDetails($quoteTransfer);
+        return $this->getFacade()->quoteSetDefault($quoteTransfer);
     }
 
     /**
