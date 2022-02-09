@@ -42,17 +42,17 @@ class ReadSharedCartPermissionPlugin extends AbstractPlugin implements Executabl
      * @api
      *
      * @param array $configuration
-     * @param int|null $context ID quote.
+     * @param int|null $idQuote
      *
      * @return bool
      */
-    public function can(array $configuration, $context = null)
+    public function can(array $configuration, $idQuote = null)
     {
-        if (!$context) {
+        if (!$idQuote) {
             return false;
         }
 
-        return in_array($context, $configuration[SharedCartConfig::PERMISSION_CONFIG_ID_QUOTE_COLLECTION]);
+        return in_array($idQuote, $configuration[SharedCartConfig::PERMISSION_CONFIG_ID_QUOTE_COLLECTION]);
     }
 
     /**

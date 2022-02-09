@@ -41,23 +41,23 @@ class CartDeleteChecker implements CartDeleteCheckerInterface
     }
 
     /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
+     * @param \Generated\Shared\Transfer\QuoteTransfer $currentQuote
      *
      * @return bool
      */
-    public function isQuoteDeletable(QuoteTransfer $quoteTransfer): bool
+    public function isQuoteDeletable(QuoteTransfer $currentQuote): bool
     {
         $customerTransfer = $this->customerClient->getCustomer();
 
-        if (!$this->isQuoteOwner($quoteTransfer, $customerTransfer)) {
-            return $this->can(WriteSharedCartPermissionPlugin::KEY, $quoteTransfer->getIdQuote());
+        if (!$this->isQuoteOwner($currentQuote, $customerTransfer)) {
+            return $this->can(WriteSharedCartPermissionPlugin::KEY, $currentQuote->getIdQuote());
         }
-        foreach ($this->multiCartClient->getQuoteCollection()->getQuotes() as $existingQuoteTransfer) {
-            if ($existingQuoteTransfer->getIdQuote() === $quoteTransfer->getIdQuote()) {
+        foreach ($this->multiCartClient->getQuoteCollection()->getQuotes() as $quoteTransfer) {
+            if ($quoteTransfer->getIdQuote() === $currentQuote->getIdQuote()) {
                 continue;
             }
 
-            if ($this->isQuoteOwner($existingQuoteTransfer, $customerTransfer)) {
+            if ($this->isQuoteOwner($quoteTransfer, $customerTransfer)) {
                 return true;
             }
         }

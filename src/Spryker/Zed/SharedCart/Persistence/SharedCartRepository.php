@@ -46,7 +46,6 @@ class SharedCartRepository extends AbstractRepository implements SharedCartRepos
 
         $ownQuoteIdCollection = $this->findOwnQuotes($idCompanyUser);
 
-        /** @var \Propel\Runtime\Collection\ObjectCollection|\Orm\Zed\Permission\Persistence\SpyPermission[] $permissionEntities */
         $permissionEntities = $this->getFactory()
             ->createPermissionQuery()
             ->joinSpyQuotePermissionGroupToPermission()
@@ -74,7 +73,7 @@ class SharedCartRepository extends AbstractRepository implements SharedCartRepos
     }
 
     /**
-     * @param \Propel\Runtime\Collection\ObjectCollection|\Orm\Zed\Permission\Persistence\SpyPermission[] $permissionEntities
+     * @param \Propel\Runtime\Collection\ObjectCollection $permissionEntities
      *
      * @return array<int>
      */
@@ -125,7 +124,6 @@ class SharedCartRepository extends AbstractRepository implements SharedCartRepos
             ->find()
             ->toArray();
 
-        /** @var \Propel\Runtime\Collection\ObjectCollection|\Orm\Zed\Permission\Persistence\SpyPermission[] $permissionEntities */
         $permissionEntities = $this->getFactory()
             ->createPermissionQuery()
             ->joinSpyQuotePermissionGroupToPermission()
