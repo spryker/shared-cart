@@ -11,13 +11,7 @@ use Generated\Shared\Transfer\PermissionCollectionTransfer;
 
 interface SharedCartToPermissionFacadeInterface
 {
-    /**
-     * @return \Generated\Shared\Transfer\PermissionCollectionTransfer
-     */
     public function findAll(): PermissionCollectionTransfer;
 
-    /**
-     * @return void
-     */
     public function syncPermissionPlugins(): void;
 }

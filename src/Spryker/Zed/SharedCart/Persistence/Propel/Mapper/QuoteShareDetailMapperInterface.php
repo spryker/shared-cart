@@ -14,11 +14,6 @@ use Propel\Runtime\Collection\Collection;
 
 interface QuoteShareDetailMapperInterface
 {
-    /**
-     * @param \Orm\Zed\SharedCart\Persistence\SpyQuoteCompanyUser $quoteCompanyUserEntity
-     *
-     * @return \Generated\Shared\Transfer\ShareDetailTransfer
-     */
     public function mapQuoteCompanyUserToShareDetailTransfer(SpyQuoteCompanyUser $quoteCompanyUserEntity): ShareDetailTransfer;
 
     /**

@@ -55,25 +55,16 @@ use Spryker\Zed\SharedCart\SharedCartDependencyProvider;
  */
 class SharedCartBusinessFactory extends AbstractBusinessFactory
 {
-    /**
-     * @return \Spryker\Zed\SharedCart\Business\QuoteResponseExpander\QuoteResponseExpanderInterface
-     */
     public function createQuoteResponseExpander(): QuoteResponseExpanderInterface
     {
         return new QuoteResponseExpander($this->getQuoteResponseExpanderList());
     }
 
-    /**
-     * @return \Spryker\Zed\SharedCart\Business\QuoteResponseExpander\QuoteResponseExpanderInterface
-     */
     public function createCustomerPermissionQuoteResponseExpander(): QuoteResponseExpanderInterface
     {
         return new CustomerPermissionQuoteResponseExpander($this->getCustomerFacade(), $this->getRepository());
     }
 
-    /**
-     * @return \Spryker\Zed\SharedCart\Business\QuoteResponseExpander\QuoteResponseExpanderInterface
-     */
     public function createCustomerShareCartQuoteResponseExpander(): QuoteResponseExpanderInterface
     {
         return new CustomerShareCartQuoteResponseExpander(
@@ -82,33 +73,21 @@ class SharedCartBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\SharedCart\Business\QuoteResponseExpander\QuoteResponseExpanderInterface
-     */
     public function createQuoteShareDetailsQuoteResponseExpander(): QuoteResponseExpanderInterface
     {
         return new QuoteShareDetailsQuoteResponseExpander($this->getRepository());
     }
 
-    /**
-     * @return \Spryker\Zed\SharedCart\Business\Model\QuoteReaderInterface
-     */
     public function createQuoteReader(): QuoteReaderInterface
     {
         return new QuoteReader($this->getRepository(), $this->getQuoteFacade());
     }
 
-    /**
-     * @return \Spryker\Zed\SharedCart\Business\Model\QuotePermissionGroupReaderInterface
-     */
     public function createQuotePermissionGroupReader(): QuotePermissionGroupReaderInterface
     {
         return new QuotePermissionGroupReader($this->getRepository());
     }
 
-    /**
-     * @return \Spryker\Zed\SharedCart\Business\Installer\QuotePermissionGroupInstallerInterface
-     */
     public function createQuotePermissionGroupInstaller(): QuotePermissionGroupInstallerInterface
     {
         return new QuotePermissionGroupInstaller(
@@ -118,17 +97,11 @@ class SharedCartBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\SharedCart\Business\Activator\QuoteActivatorInterface
-     */
     public function createQuoteActivator(): QuoteActivatorInterface
     {
         return new QuoteActivator($this->getEntityManager());
     }
 
-    /**
-     * @return \Spryker\Zed\SharedCart\Business\Model\QuoteCompanyUserWriterInterface
-     */
     public function createQuoteCompanyUserWriter(): QuoteCompanyUserWriterInterface
     {
         return new QuoteCompanyUserWriter(
@@ -137,9 +110,6 @@ class SharedCartBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\SharedCart\Business\CustomerExpander\CustomerExpanderInterface
-     */
     public function createCustomerExpander(): CustomerExpanderInterface
     {
         return new CustomerExpander(
@@ -147,9 +117,6 @@ class SharedCartBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\SharedCart\Business\QuoteShareDetails\QuoteShareDetailsReaderInterface
-     */
     public function createQuoteShareDetailsReader(): QuoteShareDetailsReaderInterface
     {
         return new QuoteShareDetailsReader(
@@ -158,17 +125,11 @@ class SharedCartBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\SharedCart\Business\QuoteCompanyUser\QuoteCompanyUserReaderInterface
-     */
     public function createQuoteCompanyUserReader(): QuoteCompanyUserReaderInterface
     {
         return new QuoteCompanyUserReader($this->getRepository());
     }
 
-    /**
-     * @return \Spryker\Zed\SharedCart\Business\ResourceShare\ResourceShareQuoteShareInterface
-     */
     public function createResourceShareQuoteShare(): ResourceShareQuoteShareInterface
     {
         return new ResourceShareQuoteShare(
@@ -178,9 +139,6 @@ class SharedCartBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\SharedCart\Business\ResourceShare\ResourceShareQuoteCompanyUserWriterInterface
-     */
     public function createResourceShareQuoteCompanyUserWriter(): ResourceShareQuoteCompanyUserWriterInterface
     {
         return new ResourceShareQuoteCompanyUserWriter(
@@ -190,25 +148,16 @@ class SharedCartBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\SharedCart\Dependency\Facade\SharedCartToCustomerFacadeInterface
-     */
     public function getCustomerFacade(): SharedCartToCustomerFacadeInterface
     {
         return $this->getProvidedDependency(SharedCartDependencyProvider::FACADE_CUSTOMER);
     }
 
-    /**
-     * @return \Spryker\Zed\SharedCart\Dependency\Facade\SharedCartToQuoteFacadeInterface
-     */
     public function getQuoteFacade(): SharedCartToQuoteFacadeInterface
     {
         return $this->getProvidedDependency(SharedCartDependencyProvider::FACADE_QUOTE);
     }
 
-    /**
-     * @return \Spryker\Zed\SharedCart\Dependency\Facade\SharedCartToPermissionFacadeInterface
-     */
     public function getPermissionFacade(): SharedCartToPermissionFacadeInterface
     {
         return $this->getProvidedDependency(SharedCartDependencyProvider::FACADE_PERMISSION);
@@ -226,17 +175,11 @@ class SharedCartBusinessFactory extends AbstractBusinessFactory
         ];
     }
 
-    /**
-     * @return \Spryker\Zed\SharedCart\Dependency\Facade\SharedCartToStoreFacadeInterface
-     */
     public function getStoreFacade(): SharedCartToStoreFacadeInterface
     {
         return $this->getProvidedDependency(SharedCartDependencyProvider::FACADE_STORE);
     }
 
-    /**
-     * @return \Spryker\Zed\SharedCart\Business\QuoteCollectionExpander\SharedCartQuoteCollectionExpanderInterface
-     */
     public function createSharedCartQuoteCollectionExpander(): SharedCartQuoteCollectionExpanderInterface
     {
         return new SharedCartQuoteCollectionExpander(
@@ -246,9 +189,6 @@ class SharedCartBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\SharedCart\Business\Messenger\SharedCartMessengerInterface
-     */
     public function createSharedCartMessenger(): SharedCartMessengerInterface
     {
         return new SharedCartMessenger(
@@ -267,9 +207,6 @@ class SharedCartBusinessFactory extends AbstractBusinessFactory
         return new SharedCartCommentValidator($this->getRepository());
     }
 
-    /**
-     * @return \Spryker\Zed\SharedCart\Business\Validator\SharedCartCommentAccessValidatorInterface
-     */
     public function createSharedCartCommentAccessValidator(): SharedCartCommentAccessValidatorInterface
     {
         return new SharedCartCommentAccessValidator(
@@ -278,9 +215,6 @@ class SharedCartBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\SharedCart\Dependency\Facade\SharedCartToMessengerFacadeInterface
-     */
     public function getMessengerFacade(): SharedCartToMessengerFacadeInterface
     {
         return $this->getProvidedDependency(SharedCartDependencyProvider::FACADE_MESSENGER);

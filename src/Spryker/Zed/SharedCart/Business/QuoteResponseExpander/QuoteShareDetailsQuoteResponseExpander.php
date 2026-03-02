@@ -22,19 +22,11 @@ class QuoteShareDetailsQuoteResponseExpander implements QuoteResponseExpanderInt
      */
     protected $sharedCartRepository;
 
-    /**
-     * @param \Spryker\Zed\SharedCart\Persistence\SharedCartRepositoryInterface $sharedCartRepository
-     */
     public function __construct(SharedCartRepositoryInterface $sharedCartRepository)
     {
         $this->sharedCartRepository = $sharedCartRepository;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteResponseTransfer $quoteResponseTransfer
-     *
-     * @return \Generated\Shared\Transfer\QuoteResponseTransfer
-     */
     public function expand(QuoteResponseTransfer $quoteResponseTransfer): QuoteResponseTransfer
     {
         $customerTransfer = $quoteResponseTransfer->requireCustomer()->getCustomer();
@@ -169,11 +161,6 @@ class QuoteShareDetailsQuoteResponseExpander implements QuoteResponseExpanderInt
         return $shareDetailsTransferList;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return bool
-     */
     protected function isCustomerQuoteOwner(QuoteTransfer $quoteTransfer): bool
     {
         $customer = $quoteTransfer->getCustomer();

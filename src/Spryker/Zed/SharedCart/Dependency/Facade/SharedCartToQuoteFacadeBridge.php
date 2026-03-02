@@ -27,31 +27,16 @@ class SharedCartToQuoteFacadeBridge implements SharedCartToQuoteFacadeInterface
         $this->quoteFacade = $quoteFacade;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteCriteriaFilterTransfer $quoteCriteriaFilterTransfer
-     *
-     * @return \Generated\Shared\Transfer\QuoteCollectionTransfer
-     */
     public function getQuoteCollection(QuoteCriteriaFilterTransfer $quoteCriteriaFilterTransfer): QuoteCollectionTransfer
     {
         return $this->quoteFacade->getQuoteCollection($quoteCriteriaFilterTransfer);
     }
 
-    /**
-     * @param int $idQuote
-     *
-     * @return \Generated\Shared\Transfer\QuoteResponseTransfer
-     */
     public function findQuoteById(int $idQuote): QuoteResponseTransfer
     {
         return $this->quoteFacade->findQuoteById($idQuote);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return bool
-     */
     public function isQuoteLocked(QuoteTransfer $quoteTransfer): bool
     {
         return $this->quoteFacade->isQuoteLocked($quoteTransfer);

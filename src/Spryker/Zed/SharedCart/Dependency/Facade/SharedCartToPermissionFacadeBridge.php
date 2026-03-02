@@ -24,17 +24,11 @@ class SharedCartToPermissionFacadeBridge implements SharedCartToPermissionFacade
         $this->permissionFacade = $permissionFacade;
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\PermissionCollectionTransfer
-     */
     public function findAll(): PermissionCollectionTransfer
     {
         return $this->permissionFacade->findAll();
     }
 
-    /**
-     * @return void
-     */
     public function syncPermissionPlugins(): void
     {
         $this->permissionFacade->syncPermissionPlugins();

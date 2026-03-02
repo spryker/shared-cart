@@ -45,11 +45,6 @@ class SharedCartsUpdateQuoteUpdatePlugin extends AbstractPlugin implements Quote
         return $quoteResponseTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteCollectionTransfer $quoteCollectionTransfer
-     *
-     * @return \Generated\Shared\Transfer\QuoteCollectionTransfer
-     */
     protected function sortQuoteCollectionByName(QuoteCollectionTransfer $quoteCollectionTransfer): QuoteCollectionTransfer
     {
         $quoteTransferList = (array)$quoteCollectionTransfer->getQuotes();
@@ -61,12 +56,6 @@ class SharedCartsUpdateQuoteUpdatePlugin extends AbstractPlugin implements Quote
         return $quoteCollectionTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransferA
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransferB
-     *
-     * @return int
-     */
     protected function compareQuotes(QuoteTransfer $quoteTransferA, QuoteTransfer $quoteTransferB): int
     {
         return $quoteTransferA->getName() <=> $quoteTransferB->getName();

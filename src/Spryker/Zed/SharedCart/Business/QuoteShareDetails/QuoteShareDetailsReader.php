@@ -28,22 +28,12 @@ class QuoteShareDetailsReader implements QuoteShareDetailsReaderInterface
      */
     protected $customerFacade;
 
-    /**
-     * @param \Spryker\Zed\SharedCart\Persistence\SharedCartRepositoryInterface $sharedCartRepository
-     * @param \Spryker\Zed\SharedCart\Dependency\Facade\SharedCartToCustomerFacadeInterface $customerFacade
-     */
     public function __construct(SharedCartRepositoryInterface $sharedCartRepository, SharedCartToCustomerFacadeInterface $customerFacade)
     {
         $this->sharedCartRepository = $sharedCartRepository;
         $this->customerFacade = $customerFacade;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     * @param bool $excludeAnonymizedCustomers
-     *
-     * @return \Generated\Shared\Transfer\ShareDetailCollectionTransfer
-     */
     public function getShareDetailsByIdQuote(QuoteTransfer $quoteTransfer, bool $excludeAnonymizedCustomers = false): ShareDetailCollectionTransfer
     {
         $quoteTransfer->requireIdQuote();
@@ -62,22 +52,12 @@ class QuoteShareDetailsReader implements QuoteShareDetailsReaderInterface
         return $this->sharedCartRepository->getSharedCartDetails($shareCartRequestTransfer, $excludeAnonymizedCustomers);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShareDetailCriteriaFilterTransfer $shareDetailCriteriaFilterTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShareDetailCollectionTransfer
-     */
     public function getShareDetailCollectionByShareDetailCriteria(
         ShareDetailCriteriaFilterTransfer $shareDetailCriteriaFilterTransfer
     ): ShareDetailCollectionTransfer {
         return $this->sharedCartRepository->getShareDetailCollectionByShareDetailCriteria($shareDetailCriteriaFilterTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return \Generated\Shared\Transfer\CustomerCollectionTransfer
-     */
     public function getCustomerCollectionByQuote(QuoteTransfer $quoteTransfer): CustomerCollectionTransfer
     {
         $this->assertQuoteCustomerData($quoteTransfer);
@@ -96,11 +76,6 @@ class QuoteShareDetailsReader implements QuoteShareDetailsReaderInterface
         return $customerCollectionTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return void
-     */
     protected function assertQuoteCustomerData(QuoteTransfer $quoteTransfer): void
     {
         $quoteTransfer->requireIdQuote()
@@ -110,12 +85,6 @@ class QuoteShareDetailsReader implements QuoteShareDetailsReaderInterface
             ->requireCustomerReference();
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
-     *
-     * @return bool
-     */
     protected function isQuoteOwner(QuoteTransfer $quoteTransfer, CustomerTransfer $customerTransfer): bool
     {
         return $quoteTransfer->getCustomerReference() === $customerTransfer->getCustomerReference();

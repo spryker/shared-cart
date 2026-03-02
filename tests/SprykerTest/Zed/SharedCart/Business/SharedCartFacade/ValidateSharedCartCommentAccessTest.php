@@ -64,9 +64,6 @@ class ValidateSharedCartCommentAccessTest extends Unit
      */
     protected SharedCartBusinessTester $tester;
 
-    /**
-     * @return void
-     */
     public function testShouldReturnSuccessfulResponseIfCustomerHasAccessToQuoteWithFullAccess(): void
     {
         // Arrange
@@ -87,9 +84,6 @@ class ValidateSharedCartCommentAccessTest extends Unit
         $this->assertTrue($commentValidationResponseTransfer->getIsSuccessful());
     }
 
-    /**
-     * @return void
-     */
     public function testShouldReturnSuccessfulResponseIfCustomerHasAccessToQuoteWithReadOnly(): void
     {
         // Arrange
@@ -112,9 +106,6 @@ class ValidateSharedCartCommentAccessTest extends Unit
         $this->assertTrue($commentValidationResponseTransfer->getIsSuccessful());
     }
 
-    /**
-     * @return void
-     */
     public function testShouldReturnSuccessfulResponseIfCustomerIsOwnerOfQuote(): void
     {
         // Arrange
@@ -135,9 +126,6 @@ class ValidateSharedCartCommentAccessTest extends Unit
         $this->assertTrue($commentValidationResponseTransfer->getIsSuccessful());
     }
 
-    /**
-     * @return void
-     */
     public function testShouldReturnErrorIfCustomerDoesNotHaveAccessToQuote(): void
     {
         // Arrange
@@ -163,9 +151,6 @@ class ValidateSharedCartCommentAccessTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testShouldReturnErrorIfQuoteDoesNotExist(): void
     {
         // Arrange
@@ -188,9 +173,6 @@ class ValidateSharedCartCommentAccessTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testShouldReturnErrorIfCompanyUserIsNotSet(): void
     {
         // Arrange
@@ -217,9 +199,6 @@ class ValidateSharedCartCommentAccessTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testShouldReturnErrorIfCompanyUserIdIsNotSet(): void
     {
         // Arrange
@@ -277,11 +256,6 @@ class ValidateSharedCartCommentAccessTest extends Unit
         return [$quoteTransfer, $ownerCustomerTransfer, $customerTransfer];
     }
 
-    /**
-     * @param string $permissionGroup
-     *
-     * @return \Generated\Shared\Transfer\SpyQuotePermissionGroupEntityTransfer
-     */
     protected function createPermissionGroup(string $permissionGroup): SpyQuotePermissionGroupEntityTransfer
     {
         if ($permissionGroup === static::PERMISSION_GROUP_READ_ONLY) {

@@ -24,11 +24,6 @@ class QuoteResponseExpander implements QuoteResponseExpanderInterface
         $this->quoteResponseExpanderList = $quoteResponseExpanderList;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteResponseTransfer $quoteResponseTransfer
-     *
-     * @return \Generated\Shared\Transfer\QuoteResponseTransfer
-     */
     public function expand(QuoteResponseTransfer $quoteResponseTransfer): QuoteResponseTransfer
     {
         foreach ($this->quoteResponseExpanderList as $quoteResponseExpander) {

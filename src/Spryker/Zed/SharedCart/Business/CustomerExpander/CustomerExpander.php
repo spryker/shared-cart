@@ -18,19 +18,11 @@ class CustomerExpander implements CustomerExpanderInterface
      */
     protected $sharedCartRepository;
 
-    /**
-     * @param \Spryker\Zed\SharedCart\Persistence\SharedCartRepositoryInterface $sharedCartRepository
-     */
     public function __construct(SharedCartRepositoryInterface $sharedCartRepository)
     {
         $this->sharedCartRepository = $sharedCartRepository;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
-     *
-     * @return \Generated\Shared\Transfer\CustomerTransfer
-     */
     public function expandCustomer(CustomerTransfer $customerTransfer): CustomerTransfer
     {
         $customerTransfer->requireCompanyUserTransfer();
@@ -45,12 +37,6 @@ class CustomerExpander implements CustomerExpanderInterface
         return $this->addCustomerPermissions($customerTransfer, $permissionCollectionTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
-     * @param \Generated\Shared\Transfer\PermissionCollectionTransfer $permissionCollectionTransfer
-     *
-     * @return \Generated\Shared\Transfer\CustomerTransfer
-     */
     protected function addCustomerPermissions(
         CustomerTransfer $customerTransfer,
         PermissionCollectionTransfer $permissionCollectionTransfer

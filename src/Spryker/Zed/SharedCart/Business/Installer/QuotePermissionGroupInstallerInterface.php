@@ -9,8 +9,5 @@ namespace Spryker\Zed\SharedCart\Business\Installer;
 
 interface QuotePermissionGroupInstallerInterface
 {
-    /**
-     * @return void
-     */
     public function install(): void;
 }

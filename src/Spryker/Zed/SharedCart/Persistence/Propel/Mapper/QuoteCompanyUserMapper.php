@@ -13,12 +13,6 @@ use Orm\Zed\SharedCart\Persistence\SpyQuoteCompanyUser;
 
 class QuoteCompanyUserMapper
 {
-    /**
-     * @param \Orm\Zed\SharedCart\Persistence\SpyQuoteCompanyUser $spyQuoteCompanyUser
-     * @param \Generated\Shared\Transfer\QuoteCompanyUserTransfer $quoteCompanyUserTransfer
-     *
-     * @return \Generated\Shared\Transfer\QuoteCompanyUserTransfer
-     */
     public function mapQuoteCompanyUserEntityToQuoteCompanyUserTransfer(
         SpyQuoteCompanyUser $spyQuoteCompanyUser,
         QuoteCompanyUserTransfer $quoteCompanyUserTransfer
@@ -32,12 +26,6 @@ class QuoteCompanyUserMapper
         return $quoteCompanyUserTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteCompanyUserTransfer $quoteCompanyUserTransfer
-     * @param \Orm\Zed\SharedCart\Persistence\SpyQuoteCompanyUser $spyQuoteCompanyUser
-     *
-     * @return \Orm\Zed\SharedCart\Persistence\SpyQuoteCompanyUser
-     */
     public function mapQuoteCompanyUserTransferToQuoteCompanyUserEntity(
         QuoteCompanyUserTransfer $quoteCompanyUserTransfer,
         SpyQuoteCompanyUser $spyQuoteCompanyUser

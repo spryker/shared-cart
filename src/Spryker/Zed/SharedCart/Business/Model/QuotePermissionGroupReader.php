@@ -19,19 +19,11 @@ class QuotePermissionGroupReader implements QuotePermissionGroupReaderInterface
      */
     protected $sharedCartRepository;
 
-    /**
-     * @param \Spryker\Zed\SharedCart\Persistence\SharedCartRepositoryInterface $sharedCartRepository
-     */
     public function __construct(SharedCartRepositoryInterface $sharedCartRepository)
     {
         $this->sharedCartRepository = $sharedCartRepository;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuotePermissionGroupCriteriaFilterTransfer $criteriaFilterTransfer
-     *
-     * @return \Generated\Shared\Transfer\QuotePermissionGroupResponseTransfer
-     */
     public function getQuotePermissionGroupList(QuotePermissionGroupCriteriaFilterTransfer $criteriaFilterTransfer): QuotePermissionGroupResponseTransfer
     {
         $quotePermissionGroupResponseTransfer = new QuotePermissionGroupResponseTransfer();
@@ -44,11 +36,6 @@ class QuotePermissionGroupReader implements QuotePermissionGroupReaderInterface
         return $quotePermissionGroupResponseTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuotePermissionGroupTransfer $quotePermissionGroupTransfer
-     *
-     * @return \Generated\Shared\Transfer\QuotePermissionGroupResponseTransfer
-     */
     public function findQuotePermissionGroupById(QuotePermissionGroupTransfer $quotePermissionGroupTransfer): QuotePermissionGroupResponseTransfer
     {
         $quotePermissionGroupTransfer->requireIdQuotePermissionGroup();

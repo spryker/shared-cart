@@ -66,9 +66,6 @@ class ValidateCommentTest extends Unit
      */
     protected $tester;
 
-    /**
-     * @return void
-     */
     public function testWillReturnErrorIfCommentIsNotSet(): void
     {
         // Arrange
@@ -88,9 +85,6 @@ class ValidateCommentTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testWillReturnErrorIfCustomerIsNotSet(): void
     {
         // Arrange
@@ -110,9 +104,6 @@ class ValidateCommentTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testWillReturnErrorIfCompanyUserIsNotSet(): void
     {
         // Arrange
@@ -133,9 +124,6 @@ class ValidateCommentTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testWillReturnErrorIfIdCompanyUserIsNotSet(): void
     {
         // Arrange
@@ -157,9 +145,6 @@ class ValidateCommentTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testWillReturnErrorIfOwnerIsNotSet(): void
     {
         // Arrange
@@ -184,9 +169,6 @@ class ValidateCommentTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testWillReturnErrorIfQuoteDoesNotExist(): void
     {
         // Arrange
@@ -214,9 +196,6 @@ class ValidateCommentTest extends Unit
         $this->assertValidationError($commentValidationResponseTransfer, static::GLOSSARY_KEY_COMMENT_ACCESS_DENIED);
     }
 
-    /**
-     * @return void
-     */
     public function testWillReturnErrorIfCompanyUserDoeNotHavePermissionForProvidedQuote(): void
     {
         // Arrange
@@ -246,9 +225,6 @@ class ValidateCommentTest extends Unit
         $this->assertValidationError($commentValidationResponseTransfer, static::GLOSSARY_KEY_COMMENT_ACCESS_DENIED);
     }
 
-    /**
-     * @return void
-     */
     public function testWillReturnSuccessfulResponseIfCompanyUserHasPermissionForProvidedQuote(): void
     {
         // Arrange
@@ -295,12 +271,6 @@ class ValidateCommentTest extends Unit
         $this->assertCount(0, $commentValidationResponseTransfer->getMessages());
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CommentValidationResponseTransfer $commentValidationResponseTransfer
-     * @param string $expectedMessage
-     *
-     * @return void
-     */
     protected function assertValidationError(CommentValidationResponseTransfer $commentValidationResponseTransfer, string $expectedMessage): void
     {
         $this->assertFalse($commentValidationResponseTransfer->getIsSuccessful());

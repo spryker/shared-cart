@@ -11,10 +11,5 @@ use Generated\Shared\Transfer\QuoteCompanyUserTransfer;
 
 interface QuoteCompanyUserReaderInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\QuoteCompanyUserTransfer $quoteCompanyUserTransfer
-     *
-     * @return \Generated\Shared\Transfer\QuoteCompanyUserTransfer|null
-     */
     public function findQuoteCompanyUserByUuid(QuoteCompanyUserTransfer $quoteCompanyUserTransfer): ?QuoteCompanyUserTransfer;
 }

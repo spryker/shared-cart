@@ -26,19 +26,11 @@ class SwitchDefaultCartByResourceShare implements SwitchDefaultCartByResourceSha
      */
     protected $multiCartClient;
 
-    /**
-     * @param \Spryker\Client\SharedCart\Dependency\Client\SharedCartToMultiCartClientInterface $multiCartClient
-     */
     public function __construct(SharedCartToMultiCartClientInterface $multiCartClient)
     {
         $this->multiCartClient = $multiCartClient;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ResourceShareRequestTransfer $resourceShareRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\ResourceShareResponseTransfer
-     */
     public function switchDefaultCartByResourceShare(
         ResourceShareRequestTransfer $resourceShareRequestTransfer
     ): ResourceShareResponseTransfer {
@@ -53,12 +45,6 @@ class SwitchDefaultCartByResourceShare implements SwitchDefaultCartByResourceSha
         return $this->updateDefaultQuote($quoteTransfer, $resourceShareRequestTransfer->getResourceShare());
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     * @param \Generated\Shared\Transfer\ResourceShareTransfer $resourceShareTransfer
-     *
-     * @return \Generated\Shared\Transfer\ResourceShareResponseTransfer
-     */
     protected function updateDefaultQuote(
         QuoteTransfer $quoteTransfer,
         ResourceShareTransfer $resourceShareTransfer

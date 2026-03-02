@@ -34,21 +34,12 @@ class QuoteCompanyUserWriter implements QuoteCompanyUserWriterInterface
      */
     protected $sharedCartEntityManager;
 
-    /**
-     * @param \Spryker\Zed\SharedCart\Persistence\SharedCartRepositoryInterface $sharedCartRepository
-     * @param \Spryker\Zed\SharedCart\Persistence\SharedCartEntityManagerInterface $sharedCartEntityManager
-     */
     public function __construct(SharedCartRepositoryInterface $sharedCartRepository, SharedCartEntityManagerInterface $sharedCartEntityManager)
     {
         $this->sharedCartRepository = $sharedCartRepository;
         $this->sharedCartEntityManager = $sharedCartEntityManager;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return \Generated\Shared\Transfer\QuoteTransfer
-     */
     public function updateQuoteCompanyUsers(QuoteTransfer $quoteTransfer): QuoteTransfer
     {
         return $this->getTransactionHandler()->handleTransaction(function () use ($quoteTransfer) {
@@ -56,22 +47,12 @@ class QuoteCompanyUserWriter implements QuoteCompanyUserWriterInterface
         });
     }
 
-    /**
-     * @param int $idCompanyUser
-     *
-     * @return void
-     */
     public function deleteShareRelationsForCompanyUserId(int $idCompanyUser): void
     {
         $this->sharedCartEntityManager
             ->deleteShareRelationsForCompanyUserId($idCompanyUser);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShareCartRequestTransfer $shareCartRequestTransfer
-     *
-     * @return void
-     */
     public function addQuoteCompanyUser(ShareCartRequestTransfer $shareCartRequestTransfer): void
     {
         $shareCartRequestTransfer->requireIdQuote()
@@ -83,11 +64,6 @@ class QuoteCompanyUserWriter implements QuoteCompanyUserWriterInterface
         $this->createNewQuoteCompanyUser($shareCartRequestTransfer->getIdQuote(), $shareDetailTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShareCartRequestTransfer $shareCartRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShareCartResponseTransfer
-     */
     public function createQuoteCompanyUser(ShareCartRequestTransfer $shareCartRequestTransfer): ShareCartResponseTransfer
     {
         $shareCartRequestTransfer->requireIdQuote()
@@ -117,11 +93,6 @@ class QuoteCompanyUserWriter implements QuoteCompanyUserWriterInterface
             ->setShareDetails($shareDetailCollectionTransfer->getShareDetails());
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShareCartRequestTransfer $shareCartRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShareCartResponseTransfer
-     */
     public function updateQuoteCompanyUserPermissionGroup(ShareCartRequestTransfer $shareCartRequestTransfer): ShareCartResponseTransfer
     {
         $shareCartRequestTransfer->requireShareDetails();
@@ -146,11 +117,6 @@ class QuoteCompanyUserWriter implements QuoteCompanyUserWriterInterface
             ->setShareDetails($shareDetailCollectionTransfer->getShareDetails());
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShareCartRequestTransfer $shareCartRequestTransfer
-     *
-     * @return void
-     */
     public function deleteQuoteCompanyUser(ShareCartRequestTransfer $shareCartRequestTransfer): void
     {
         $shareCartRequestTransfer->requireShareDetails();
@@ -162,11 +128,6 @@ class QuoteCompanyUserWriter implements QuoteCompanyUserWriterInterface
         $this->sharedCartEntityManager->deleteQuoteCompanyUser($shareDetailTransfer->getIdQuoteCompanyUser());
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return \Generated\Shared\Transfer\QuoteTransfer
-     */
     protected function executeUpdateQuoteCompanyUsersTransaction(QuoteTransfer $quoteTransfer): QuoteTransfer
     {
         $currentQuoteCompanyUserIdCollection = $this->sharedCartRepository->findQuoteCompanyUserIdCollection($quoteTransfer->getIdQuote());
@@ -246,11 +207,6 @@ class QuoteCompanyUserWriter implements QuoteCompanyUserWriterInterface
             !== $storedQuotePermissionGroupIdIndexes[$shareDetailTransfer->getIdQuoteCompanyUser()];
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return void
-     */
     protected function addNewQuoteCompanyUsers(QuoteTransfer $quoteTransfer): void
     {
         $defaultPermissionGroupTransfer = $this->getDefaultPermissionGroup();
@@ -267,12 +223,6 @@ class QuoteCompanyUserWriter implements QuoteCompanyUserWriterInterface
         }
     }
 
-    /**
-     * @param int $idQuote
-     * @param \Generated\Shared\Transfer\ShareDetailTransfer $shareDetailTransfer
-     *
-     * @return void
-     */
     protected function createNewQuoteCompanyUser(int $idQuote, ShareDetailTransfer $shareDetailTransfer): void
     {
         $companyUserEntityTransfer = new SpyQuoteCompanyUserEntityTransfer();
@@ -286,9 +236,6 @@ class QuoteCompanyUserWriter implements QuoteCompanyUserWriterInterface
         $this->sharedCartEntityManager->saveQuoteCompanyUser($companyUserEntityTransfer);
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\QuotePermissionGroupTransfer
-     */
     protected function getDefaultPermissionGroup(): QuotePermissionGroupTransfer
     {
         $criteriaFilterTransfer = new QuotePermissionGroupCriteriaFilterTransfer();
@@ -332,11 +279,6 @@ class QuoteCompanyUserWriter implements QuoteCompanyUserWriterInterface
         return $quoteCompanyUserIdIndex;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShareCartRequestTransfer $shareCartRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\QuoteCompanyUserTransfer
-     */
     protected function createQuoteCompanyUserTransfer(ShareCartRequestTransfer $shareCartRequestTransfer): QuoteCompanyUserTransfer
     {
         /** @var \Generated\Shared\Transfer\ShareDetailTransfer $shareDetailTransfer */

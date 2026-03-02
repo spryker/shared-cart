@@ -42,11 +42,6 @@ class ResourceShareQuoteShare implements ResourceShareQuoteShareInterface
      */
     protected $resourceShareQuoteCompanyUserWriter;
 
-    /**
-     * @param \Spryker\Zed\SharedCart\Persistence\SharedCartRepositoryInterface $sharedCartRepository
-     * @param \Spryker\Zed\SharedCart\Dependency\Facade\SharedCartToQuoteFacadeInterface $quoteFacade
-     * @param \Spryker\Zed\SharedCart\Business\ResourceShare\ResourceShareQuoteCompanyUserWriterInterface $resourceShareQuoteCompanyUserWriter
-     */
     public function __construct(
         SharedCartRepositoryInterface $sharedCartRepository,
         SharedCartToQuoteFacadeInterface $quoteFacade,
@@ -57,11 +52,6 @@ class ResourceShareQuoteShare implements ResourceShareQuoteShareInterface
         $this->resourceShareQuoteCompanyUserWriter = $resourceShareQuoteCompanyUserWriter;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ResourceShareRequestTransfer $resourceShareRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\ResourceShareResponseTransfer
-     */
     public function shareCartByResourceShareRequest(
         ResourceShareRequestTransfer $resourceShareRequestTransfer
     ): ResourceShareResponseTransfer {
@@ -88,11 +78,6 @@ class ResourceShareQuoteShare implements ResourceShareQuoteShareInterface
         return $this->resourceShareQuoteCompanyUserWriter->createCartShareForCompanyUser($resourceShareRequestTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ResourceShareRequestTransfer $resourceShareRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShareDetailTransfer|null
-     */
     protected function findShareDetail(ResourceShareRequestTransfer $resourceShareRequestTransfer): ?ShareDetailTransfer
     {
         $idCompanyUser = $resourceShareRequestTransfer
@@ -108,11 +93,6 @@ class ResourceShareQuoteShare implements ResourceShareQuoteShareInterface
         return $this->sharedCartRepository->findShareDetailByIdQuoteAndIdCompanyUser($idQuote, $idCompanyUser);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ResourceShareRequestTransfer $resourceShareRequestTransfer
-     *
-     * @return bool
-     */
     protected function isProvidedCompanyUserResourceShareOwner(ResourceShareRequestTransfer $resourceShareRequestTransfer): bool
     {
         $ownerCompanyUserId = $resourceShareRequestTransfer
@@ -125,11 +105,6 @@ class ResourceShareQuoteShare implements ResourceShareQuoteShareInterface
         return $customerTransfer->getCompanyUserTransfer()->getIdCompanyUser() === $ownerCompanyUserId;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ResourceShareRequestTransfer $resourceShareRequestTransfer
-     *
-     * @return bool
-     */
     protected function isProvidedCompanyUserAllowedToShareCart(ResourceShareRequestTransfer $resourceShareRequestTransfer): bool
     {
         $customerTransfer = $resourceShareRequestTransfer->getCustomer();
@@ -150,11 +125,6 @@ class ResourceShareQuoteShare implements ResourceShareQuoteShareInterface
         return true;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ResourceShareRequestTransfer $resourceShareRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\QuoteTransfer|null
-     */
     protected function findQuoteByResourceShareRequestTransfer(ResourceShareRequestTransfer $resourceShareRequestTransfer): ?QuoteTransfer
     {
         $quoteResponseTransfer = $this->quoteFacade->findQuoteById(
@@ -167,11 +137,6 @@ class ResourceShareQuoteShare implements ResourceShareQuoteShareInterface
         return $quoteResponseTransfer->getQuoteTransfer();
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ResourceShareRequestTransfer $resourceShareRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\ResourceShareResponseTransfer
-     */
     protected function validateResourceShareRequestTransfer(ResourceShareRequestTransfer $resourceShareRequestTransfer): ResourceShareResponseTransfer
     {
         if (!$this->isProvidedCompanyUserAllowedToShareCart($resourceShareRequestTransfer)) {

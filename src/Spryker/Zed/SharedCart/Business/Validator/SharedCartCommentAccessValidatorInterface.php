@@ -12,12 +12,6 @@ use Generated\Shared\Transfer\CommentValidationResponseTransfer;
 
 interface SharedCartCommentAccessValidatorInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\CommentRequestTransfer $commentRequestTransfer
-     * @param \Generated\Shared\Transfer\CommentValidationResponseTransfer $commentValidationResponseTransfer
-     *
-     * @return \Generated\Shared\Transfer\CommentValidationResponseTransfer
-     */
     public function validate(
         CommentRequestTransfer $commentRequestTransfer,
         CommentValidationResponseTransfer $commentValidationResponseTransfer

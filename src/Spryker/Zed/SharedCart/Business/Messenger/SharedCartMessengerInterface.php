@@ -11,10 +11,5 @@ use Generated\Shared\Transfer\QuoteTransfer;
 
 interface SharedCartMessengerInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return void
-     */
     public function addDefaultSharedQuoteChangedMessage(QuoteTransfer $quoteTransfer): void;
 }

@@ -15,12 +15,6 @@ use Generated\Shared\Transfer\ShareDetailCriteriaFilterTransfer;
 
 interface QuoteShareDetailsReaderInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     * @param bool $excludeAnonymizedCustomers
-     *
-     * @return \Generated\Shared\Transfer\ShareDetailCollectionTransfer
-     */
     public function getShareDetailsByIdQuote(QuoteTransfer $quoteTransfer, bool $excludeAnonymizedCustomers = false): ShareDetailCollectionTransfer;
 
     /**
@@ -31,19 +25,9 @@ interface QuoteShareDetailsReaderInterface
      */
     public function getSharedCartDetails(ShareCartRequestTransfer $shareCartRequestTransfer, bool $excludeAnonymizedCustomers = false): array;
 
-    /**
-     * @param \Generated\Shared\Transfer\ShareDetailCriteriaFilterTransfer $shareDetailCriteriaFilterTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShareDetailCollectionTransfer
-     */
     public function getShareDetailCollectionByShareDetailCriteria(
         ShareDetailCriteriaFilterTransfer $shareDetailCriteriaFilterTransfer
     ): ShareDetailCollectionTransfer;
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return \Generated\Shared\Transfer\CustomerCollectionTransfer
-     */
     public function getCustomerCollectionByQuote(QuoteTransfer $quoteTransfer): CustomerCollectionTransfer;
 }

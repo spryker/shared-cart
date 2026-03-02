@@ -13,22 +13,9 @@ use Generated\Shared\Transfer\QuoteTransfer;
 
 interface SharedCartToMultiCartClientInterface
 {
-    /**
-     * @return \Generated\Shared\Transfer\QuoteCollectionTransfer
-     */
     public function getQuoteCollection(): QuoteCollectionTransfer;
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteCollectionTransfer $quoteCollectionTransfer
-     *
-     * @return void
-     */
     public function setQuoteCollection(QuoteCollectionTransfer $quoteCollectionTransfer): void;
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return \Generated\Shared\Transfer\QuoteResponseTransfer
-     */
     public function markQuoteAsDefault(QuoteTransfer $quoteTransfer): QuoteResponseTransfer;
 }

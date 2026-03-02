@@ -27,9 +27,6 @@ use Spryker\Client\ZedRequest\ZedRequestClientInterface;
 
 class SharedCartFactory extends AbstractFactory
 {
-    /**
-     * @return \Spryker\Client\SharedCart\CartSharer\CartSharerInterface
-     */
     public function createCartSharer(): CartSharerInterface
     {
         return new CartSharer(
@@ -42,9 +39,6 @@ class SharedCartFactory extends AbstractFactory
         );
     }
 
-    /**
-     * @return \Spryker\Client\SharedCart\Permission\PermissionResolverInterface
-     */
     public function createPermissionResolver(): PermissionResolverInterface
     {
         return new PermissionResolver(
@@ -52,17 +46,11 @@ class SharedCartFactory extends AbstractFactory
         );
     }
 
-    /**
-     * @return \Spryker\Client\SharedCart\Zed\SharedCartStubInterface
-     */
     public function createZedSharedCartStub(): SharedCartStubInterface
     {
         return new SharedCartStub($this->getZedRequestClient());
     }
 
-    /**
-     * @return \Spryker\Client\SharedCart\ResourceShare\SwitchDefaultCartByResourceShareInterface
-     */
     public function createSwitchDefaultCartByResourceShare(): SwitchDefaultCartByResourceShareInterface
     {
         return new SwitchDefaultCartByResourceShare(
@@ -70,57 +58,36 @@ class SharedCartFactory extends AbstractFactory
         );
     }
 
-    /**
-     * @return \Spryker\Client\SharedCart\Dependency\Client\SharedCartToCustomerClientInterface
-     */
     public function getCustomerClient(): SharedCartToCustomerClientInterface
     {
         return $this->getProvidedDependency(SharedCartDependencyProvider::CLIENT_CUSTOMER);
     }
 
-    /**
-     * @return \Spryker\Client\SharedCart\Dependency\Client\SharedCartToMessengerClientInterface
-     */
     public function getMessengerClient(): SharedCartToMessengerClientInterface
     {
         return $this->getProvidedDependency(SharedCartDependencyProvider::CLIENT_MESSENGER);
     }
 
-    /**
-     * @return \Spryker\Client\SharedCart\Dependency\Client\SharedCartToMultiCartClientInterface
-     */
     public function getMultiCartClient(): SharedCartToMultiCartClientInterface
     {
         return $this->getProvidedDependency(SharedCartDependencyProvider::CLIENT_MULTI_CART);
     }
 
-    /**
-     * @return \Spryker\Client\SharedCart\Dependency\Client\SharedCartToPersistentCartClientInterface
-     */
     public function getPersistentCartClient(): SharedCartToPersistentCartClientInterface
     {
         return $this->getProvidedDependency(SharedCartDependencyProvider::CLIENT_PERSISTENT_CART);
     }
 
-    /**
-     * @return \Spryker\Client\ZedRequest\ZedRequestClientInterface
-     */
     public function getZedRequestClient(): ZedRequestClientInterface
     {
         return $this->getProvidedDependency(SharedCartDependencyProvider::CLIENT_ZED_REQUEST);
     }
 
-    /**
-     * @return \Spryker\Client\SharedCart\Dependency\Client\SharedCartToQuoteClientInterface
-     */
     public function getQuoteClient(): SharedCartToQuoteClientInterface
     {
         return $this->getProvidedDependency(SharedCartDependencyProvider::CLIENT_QUOTE);
     }
 
-    /**
-     * @return \Spryker\Client\SharedCart\CartDeleteChecker\CartDeleteCheckerInterface
-     */
     public function createCartDeleteChecker(): CartDeleteCheckerInterface
     {
         return new CartDeleteChecker(

@@ -53,9 +53,6 @@ class PermissionTest extends Unit
      */
     protected $quoteCompanyUserEntityTransfer2;
 
-    /**
-     * @return void
-     */
     protected function setUp(): void
     {
         parent::setUp();
@@ -112,9 +109,6 @@ class PermissionTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testOwnerCanReadCart1(): void
     {
         $ownerCanReadCart1 = $this->tester->getLocator()
@@ -125,9 +119,6 @@ class PermissionTest extends Unit
         $this->assertTrue($ownerCanReadCart1, 'Owner should have been able to read cart #1.');
     }
 
-    /**
-     * @return void
-     */
     public function testOwnerCanWriteCart1(): void
     {
         $ownerCanWriteCart1 = $this->tester->getLocator()
@@ -138,9 +129,6 @@ class PermissionTest extends Unit
         $this->assertTrue($ownerCanWriteCart1, 'Owner should have been able to write cart #1.');
     }
 
-    /**
-     * @return void
-     */
     public function testOtherUserCanReadCart1(): void
     {
         $otherUserCanReadCart1 = $this->tester->getLocator()
@@ -151,9 +139,6 @@ class PermissionTest extends Unit
         $this->assertTrue($otherUserCanReadCart1, 'User should have been able to read cart #1.');
     }
 
-    /**
-     * @return void
-     */
     public function testOtherUserCanNotWriteCart1(): void
     {
         $otherUserCanNotWriteCart1 = $this->tester->getLocator()
@@ -164,9 +149,6 @@ class PermissionTest extends Unit
         $this->assertFalse($otherUserCanNotWriteCart1, 'User should NOT have been able to write cart #1.');
     }
 
-    /**
-     * @return void
-     */
     public function testOwnerCanReadCart2(): void
     {
         $ownerCanReadCart2 = $this->tester->getLocator()
@@ -177,9 +159,6 @@ class PermissionTest extends Unit
         $this->assertTrue($ownerCanReadCart2, 'Owner should have been able to read cart #2.');
     }
 
-    /**
-     * @return void
-     */
     public function testOwnerCanWriteCart2(): void
     {
         $ownerCanWriteCart2 = $this->tester->getLocator()
@@ -190,9 +169,6 @@ class PermissionTest extends Unit
         $this->assertTrue($ownerCanWriteCart2, 'Owner should have been able to write cart #2.');
     }
 
-    /**
-     * @return void
-     */
     public function testOtherUserCanReadCart2(): void
     {
         $otherUserCanReadCart2 = $this->tester->getLocator()
@@ -203,9 +179,6 @@ class PermissionTest extends Unit
         $this->assertTrue($otherUserCanReadCart2, 'Owner should have been able to read cart #2.');
     }
 
-    /**
-     * @return void
-     */
     public function testOtherUserCanWriteCart2(): void
     {
         $otherUserCanWriteCart2 = $this->tester->getLocator()

@@ -79,9 +79,6 @@ class ShareDetailsQuoteExpanderPlugin extends AbstractPlugin implements QuoteExp
         $this->quoteShareDetailsByIdQuote = [];
     }
 
-    /**
-     * @return void
-     */
     protected function preloadShareDetails(): void
     {
         if ($this->quoteShareDetailsByIdQuote !== []) {

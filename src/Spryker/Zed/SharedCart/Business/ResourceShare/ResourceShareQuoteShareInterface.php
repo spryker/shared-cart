@@ -12,10 +12,5 @@ use Generated\Shared\Transfer\ResourceShareResponseTransfer;
 
 interface ResourceShareQuoteShareInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\ResourceShareRequestTransfer $resourceShareRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\ResourceShareResponseTransfer
-     */
     public function shareCartByResourceShareRequest(ResourceShareRequestTransfer $resourceShareRequestTransfer): ResourceShareResponseTransfer;
 }

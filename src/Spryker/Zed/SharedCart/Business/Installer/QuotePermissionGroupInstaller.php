@@ -31,11 +31,6 @@ class QuotePermissionGroupInstaller implements QuotePermissionGroupInstallerInte
      */
     protected $permissionFacade;
 
-    /**
-     * @param \Spryker\Zed\SharedCart\SharedCartConfig $sharedCartConfig
-     * @param \Spryker\Zed\SharedCart\Persistence\SharedCartEntityManagerInterface $sharedCartEntityManager
-     * @param \Spryker\Zed\SharedCart\Dependency\Facade\SharedCartToPermissionFacadeInterface $permissionFacade
-     */
     public function __construct(
         SharedCartConfig $sharedCartConfig,
         SharedCartEntityManagerInterface $sharedCartEntityManager,
@@ -46,9 +41,6 @@ class QuotePermissionGroupInstaller implements QuotePermissionGroupInstallerInte
         $this->permissionFacade = $permissionFacade;
     }
 
-    /**
-     * @return void
-     */
     public function install(): void
     {
         $this->getTransactionHandler()->handleTransaction(function () {
@@ -56,9 +48,6 @@ class QuotePermissionGroupInstaller implements QuotePermissionGroupInstallerInte
         });
     }
 
-    /**
-     * @return void
-     */
     protected function executeInstallTransaction(): void
     {
         $quotePermissionGroupTransfers = $this->sharedCartConfig->getQuotePermissionGroups();

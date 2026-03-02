@@ -57,11 +57,6 @@ class SharedCartBusinessTester extends Actor
      */
     protected const VALUE_OWNER_ID_COMPANY_BUSINESS_UNIT = 1;
 
-    /**
-     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
-     *
-     * @return \Generated\Shared\Transfer\QuoteTransfer
-     */
     public function createQuote(CustomerTransfer $customerTransfer): QuoteTransfer
     {
         return $this->havePersistentQuote(
@@ -71,11 +66,6 @@ class SharedCartBusinessTester extends Actor
         );
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
-     *
-     * @return \Generated\Shared\Transfer\CompanyUserTransfer
-     */
     public function createCompanyUser(CustomerTransfer $customerTransfer): CompanyUserTransfer
     {
         $companyTransfer = $this->createCompany();
@@ -91,9 +81,6 @@ class SharedCartBusinessTester extends Actor
         );
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\CompanyTransfer
-     */
     public function createCompany(): CompanyTransfer
     {
         return $this->haveCompany(
@@ -106,11 +93,6 @@ class SharedCartBusinessTester extends Actor
         );
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CompanyTransfer $companyTransfer
-     *
-     * @return \Generated\Shared\Transfer\CompanyBusinessUnitTransfer
-     */
     public function createCompanyBusinessUnit(CompanyTransfer $companyTransfer): CompanyBusinessUnitTransfer
     {
         return $this->haveCompanyBusinessUnit(
@@ -123,12 +105,6 @@ class SharedCartBusinessTester extends Actor
         );
     }
 
-    /**
-     * @param int $idCompanyUser
-     * @param \Generated\Shared\Transfer\QuotePermissionGroupTransfer $permissionQuoteGroup
-     *
-     * @return \Generated\Shared\Transfer\ShareDetailTransfer
-     */
     public function createShareCartDetail(int $idCompanyUser, QuotePermissionGroupTransfer $permissionQuoteGroup): ShareDetailTransfer
     {
         $shareDetailTransfer = new ShareDetailTransfer();
@@ -138,11 +114,6 @@ class SharedCartBusinessTester extends Actor
         return $shareDetailTransfer;
     }
 
-    /**
-     * @param array $seed
-     *
-     * @return \Generated\Shared\Transfer\CompanyUserTransfer
-     */
     public function createCompanyUserTransfer(array $seed = []): CompanyUserTransfer
     {
         $customerTransfer = $this->haveCustomer();
@@ -169,12 +140,6 @@ class SharedCartBusinessTester extends Actor
             ->setCompanyBusinessUnit($companyBusinessUnitTransfer);
     }
 
-    /**
-     * @param array $resourceShareDataSeed
-     * @param array $resourceShareSeed
-     *
-     * @return \Generated\Shared\Transfer\ResourceShareTransfer
-     */
     public function createResourceShare(array $resourceShareDataSeed = [], array $resourceShareSeed = []): ResourceShareTransfer
     {
         $resourceShareData = $resourceShareDataSeed + [

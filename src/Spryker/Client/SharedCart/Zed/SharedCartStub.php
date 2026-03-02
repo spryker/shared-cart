@@ -17,11 +17,6 @@ use Spryker\Client\ZedRequest\Stub\ZedRequestStub;
 
 class SharedCartStub extends ZedRequestStub implements SharedCartStubInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\QuotePermissionGroupCriteriaFilterTransfer $criteriaFilterTransfer
-     *
-     * @return \Generated\Shared\Transfer\QuotePermissionGroupResponseTransfer
-     */
     public function getQuotePermissionGroupList(QuotePermissionGroupCriteriaFilterTransfer $criteriaFilterTransfer): QuotePermissionGroupResponseTransfer
     {
         /** @var \Generated\Shared\Transfer\QuotePermissionGroupResponseTransfer $criteriaFilterTransfer */
@@ -30,11 +25,6 @@ class SharedCartStub extends ZedRequestStub implements SharedCartStubInterface
         return $criteriaFilterTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShareDetailCollectionTransfer
-     */
     public function getShareDetailsByIdQuoteAction(QuoteTransfer $quoteTransfer): ShareDetailCollectionTransfer
     {
         /** @var \Generated\Shared\Transfer\ShareDetailCollectionTransfer $shareDetailCollectionTransfer */
@@ -43,11 +33,6 @@ class SharedCartStub extends ZedRequestStub implements SharedCartStubInterface
         return $shareDetailCollectionTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuotePermissionGroupTransfer $quotePermissionGroupTransfer
-     *
-     * @return \Generated\Shared\Transfer\QuotePermissionGroupResponseTransfer
-     */
     public function findQuotePermissionGroupById(QuotePermissionGroupTransfer $quotePermissionGroupTransfer): QuotePermissionGroupResponseTransfer
     {
         /** @var \Generated\Shared\Transfer\QuotePermissionGroupResponseTransfer $quotePermissionGroupResponseTransfer */
@@ -59,11 +44,6 @@ class SharedCartStub extends ZedRequestStub implements SharedCartStubInterface
         return $quotePermissionGroupResponseTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return \Generated\Shared\Transfer\CustomerCollectionTransfer
-     */
     public function getCustomerCollectionByQuote(QuoteTransfer $quoteTransfer): CustomerCollectionTransfer
     {
         /** @var \Generated\Shared\Transfer\CustomerCollectionTransfer $customerCollectionTransfer */

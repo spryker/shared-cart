@@ -34,10 +34,6 @@ class SharedCartMessenger implements SharedCartMessengerInterface
      */
     protected $messengerFacade;
 
-    /**
-     * @param \Spryker\Zed\SharedCart\Persistence\SharedCartRepositoryInterface $sharedCartRepository
-     * @param \Spryker\Zed\SharedCart\Dependency\Facade\SharedCartToMessengerFacadeInterface $messengerFacade
-     */
     public function __construct(
         SharedCartRepositoryInterface $sharedCartRepository,
         SharedCartToMessengerFacadeInterface $messengerFacade
@@ -46,11 +42,6 @@ class SharedCartMessenger implements SharedCartMessengerInterface
         $this->messengerFacade = $messengerFacade;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return void
-     */
     public function addDefaultSharedQuoteChangedMessage(QuoteTransfer $quoteTransfer): void
     {
         if (!$quoteTransfer->getCustomer()) {

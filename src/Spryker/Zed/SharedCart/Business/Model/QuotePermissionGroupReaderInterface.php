@@ -13,17 +13,7 @@ use Generated\Shared\Transfer\QuotePermissionGroupTransfer;
 
 interface QuotePermissionGroupReaderInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\QuotePermissionGroupCriteriaFilterTransfer $criteriaFilterTransfer
-     *
-     * @return \Generated\Shared\Transfer\QuotePermissionGroupResponseTransfer
-     */
     public function getQuotePermissionGroupList(QuotePermissionGroupCriteriaFilterTransfer $criteriaFilterTransfer): QuotePermissionGroupResponseTransfer;
 
-    /**
-     * @param \Generated\Shared\Transfer\QuotePermissionGroupTransfer $quotePermissionGroupTransfer
-     *
-     * @return \Generated\Shared\Transfer\QuotePermissionGroupResponseTransfer
-     */
     public function findQuotePermissionGroupById(QuotePermissionGroupTransfer $quotePermissionGroupTransfer): QuotePermissionGroupResponseTransfer;
 }

@@ -32,11 +32,6 @@ class SharedCartQuoteCollectionExpander implements SharedCartQuoteCollectionExpa
      */
     protected $quoteShareDetailsReader;
 
-    /**
-     * @param \Spryker\Zed\SharedCart\Business\Model\QuoteReaderInterface $quoteReader
-     * @param \Spryker\Zed\SharedCart\Dependency\Facade\SharedCartToStoreFacadeInterface $storeFacade
-     * @param \Spryker\Zed\SharedCart\Business\QuoteShareDetails\QuoteShareDetailsReaderInterface $quoteShareDetailsReader
-     */
     public function __construct(
         QuoteReaderInterface $quoteReader,
         SharedCartToStoreFacadeInterface $storeFacade,
@@ -47,12 +42,6 @@ class SharedCartQuoteCollectionExpander implements SharedCartQuoteCollectionExpa
         $this->quoteShareDetailsReader = $quoteShareDetailsReader;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteCollectionTransfer $quoteCollectionTransfer
-     * @param \Generated\Shared\Transfer\QuoteCriteriaFilterTransfer $quoteCriteriaFilterTransfer
-     *
-     * @return \Generated\Shared\Transfer\QuoteCollectionTransfer
-     */
     public function expandQuoteCollectionWithCustomerSharedQuoteCollection(
         QuoteCollectionTransfer $quoteCollectionTransfer,
         QuoteCriteriaFilterTransfer $quoteCriteriaFilterTransfer
@@ -76,12 +65,6 @@ class SharedCartQuoteCollectionExpander implements SharedCartQuoteCollectionExpa
         return $quoteCollectionTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     * @param \Generated\Shared\Transfer\QuoteCriteriaFilterTransfer $quoteCriteriaFilterTransfer
-     *
-     * @return \Generated\Shared\Transfer\QuoteTransfer
-     */
     protected function expandQuoteWithCustomerQuotePermissionGroup(
         QuoteTransfer $quoteTransfer,
         QuoteCriteriaFilterTransfer $quoteCriteriaFilterTransfer

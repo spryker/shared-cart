@@ -17,11 +17,6 @@ use Propel\Runtime\Collection\Collection;
 
 class QuoteShareDetailMapper implements QuoteShareDetailMapperInterface
 {
-    /**
-     * @param \Orm\Zed\SharedCart\Persistence\SpyQuoteCompanyUser $quoteCompanyUserEntity
-     *
-     * @return \Generated\Shared\Transfer\ShareDetailTransfer
-     */
     public function mapQuoteCompanyUserToShareDetailTransfer(SpyQuoteCompanyUser $quoteCompanyUserEntity): ShareDetailTransfer
     {
         return (new ShareDetailTransfer())
@@ -116,23 +111,11 @@ class QuoteShareDetailMapper implements QuoteShareDetailMapperInterface
         return $indexedQuotePermissionGroupTransfers;
     }
 
-    /**
-     * @param string $lastName
-     * @param string $firstName
-     *
-     * @return string
-     */
     protected function formatCustomerFullName(string $lastName, string $firstName): string
     {
         return $lastName . ' ' . $firstName;
     }
 
-    /**
-     * @param \Orm\Zed\CompanyUser\Persistence\SpyCompanyUser $spyCompanyUser
-     * @param \Generated\Shared\Transfer\CompanyUserTransfer $companyUserTransfer
-     *
-     * @return \Generated\Shared\Transfer\CompanyUserTransfer
-     */
     protected function mapSpyCompanyUserToCompanyUserTransfer(
         SpyCompanyUser $spyCompanyUser,
         CompanyUserTransfer $companyUserTransfer

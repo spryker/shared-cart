@@ -12,12 +12,6 @@ use Generated\Shared\Transfer\QuoteCriteriaFilterTransfer;
 
 interface SharedCartQuoteCollectionExpanderInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\QuoteCollectionTransfer $quoteCollectionTransfer
-     * @param \Generated\Shared\Transfer\QuoteCriteriaFilterTransfer $quoteCriteriaFilterTransfer
-     *
-     * @return \Generated\Shared\Transfer\QuoteCollectionTransfer
-     */
     public function expandQuoteCollectionWithCustomerSharedQuoteCollection(
         QuoteCollectionTransfer $quoteCollectionTransfer,
         QuoteCriteriaFilterTransfer $quoteCriteriaFilterTransfer

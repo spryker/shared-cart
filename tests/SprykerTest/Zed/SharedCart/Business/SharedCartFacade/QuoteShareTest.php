@@ -57,9 +57,6 @@ class QuoteShareTest extends Unit
      */
     protected $tester;
 
-    /**
-     * @return void
-     */
     protected function setUp(): void
     {
         parent::setUp();
@@ -90,9 +87,6 @@ class QuoteShareTest extends Unit
         $this->tester->getFacade()->installSharedCartPermissions();
     }
 
-    /**
-     * @return void
-     */
     public function testCompanyUserShouldNotHaveAccessToForeignCartsByDefault(): void
     {
         // Arrange
@@ -115,9 +109,6 @@ class QuoteShareTest extends Unit
         $this->assertFalse($actualQuoteResponseTransfer->getIsSuccessful(), 'Company user shouldn\'t have been able to read the quote from database.');
     }
 
-    /**
-     * @return void
-     */
     public function testShareCartWithCompanyUserShouldGiveAccessToRead(): void
     {
         // Arrange
@@ -148,9 +139,6 @@ class QuoteShareTest extends Unit
         $this->assertInstanceOf(QuoteTransfer::class, $actualQuoteResponseTransfer->getQuoteTransfer(), 'Company user should have been able to read the quote from database.');
     }
 
-    /**
-     * @return void
-     */
     public function testRemoveCompanyUserPermissionGroupShouldDisallowToRead(): void
     {
         // Arrange
@@ -185,9 +173,6 @@ class QuoteShareTest extends Unit
         $this->assertFalse($actualQuoteResponseTransfer->getIsSuccessful(), 'Company user shouldn\'t have been able to read the quote from database.');
     }
 
-    /**
-     * @return void
-     */
     public function testExpandQuoteCollectionWithCustomerSharedQuoteCollectionWillExpandQuoteCollectionWithSharedQuotes(): void
     {
         // Arrange
@@ -237,11 +222,6 @@ class QuoteShareTest extends Unit
         $this->assertEquals($spyQuotePermissionGroupEntityTransfer->getName(), $quoteTransfer->getQuotePermissionGroup()->getName());
     }
 
-    /**
-     * @param string $permissionQuoteGroupName
-     *
-     * @return \Generated\Shared\Transfer\QuotePermissionGroupTransfer|null
-     */
     protected function findQuotePermissionGroup(string $permissionQuoteGroupName): ?QuotePermissionGroupTransfer
     {
         $criteriaFilterTransfer = new QuotePermissionGroupCriteriaFilterTransfer();

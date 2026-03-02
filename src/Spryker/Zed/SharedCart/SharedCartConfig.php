@@ -29,9 +29,6 @@ class SharedCartConfig extends AbstractBundleConfig
         ];
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\QuotePermissionGroupTransfer
-     */
     protected function getReadOnlyPermissionGroup(): QuotePermissionGroupTransfer
     {
         $readOnlyQuotePermissionGroupTransfer = new QuotePermissionGroupTransfer();
@@ -43,9 +40,6 @@ class SharedCartConfig extends AbstractBundleConfig
         return $readOnlyQuotePermissionGroupTransfer;
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\QuotePermissionGroupTransfer
-     */
     protected function getFullAccessPermissionGroup(): QuotePermissionGroupTransfer
     {
         $fullAccessQuotePermissionGroupTransfer = new QuotePermissionGroupTransfer();

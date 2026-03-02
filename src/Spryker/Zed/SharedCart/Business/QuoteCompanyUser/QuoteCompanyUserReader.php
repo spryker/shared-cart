@@ -17,19 +17,11 @@ class QuoteCompanyUserReader implements QuoteCompanyUserReaderInterface
      */
     protected $sharedCartRepository;
 
-    /**
-     * @param \Spryker\Zed\SharedCart\Persistence\SharedCartRepositoryInterface $sharedCartRepository
-     */
     public function __construct(SharedCartRepositoryInterface $sharedCartRepository)
     {
         $this->sharedCartRepository = $sharedCartRepository;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteCompanyUserTransfer $quoteCompanyUserTransfer
-     *
-     * @return \Generated\Shared\Transfer\QuoteCompanyUserTransfer|null
-     */
     public function findQuoteCompanyUserByUuid(QuoteCompanyUserTransfer $quoteCompanyUserTransfer): ?QuoteCompanyUserTransfer
     {
         $quoteCompanyUserTransfer->requireUuid();

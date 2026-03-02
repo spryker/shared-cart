@@ -17,19 +17,11 @@ class QuoteActivator implements QuoteActivatorInterface
      */
     protected $sharedCartEntityManager;
 
-    /**
-     * @param \Spryker\Zed\SharedCart\Persistence\SharedCartEntityManagerInterface $sharedCartEntityManager
-     */
     public function __construct(SharedCartEntityManagerInterface $sharedCartEntityManager)
     {
         $this->sharedCartEntityManager = $sharedCartEntityManager;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return \Generated\Shared\Transfer\QuoteTransfer
-     */
     public function setDefaultQuote(QuoteTransfer $quoteTransfer): QuoteTransfer
     {
         $this->sharedCartEntityManager->setQuoteDefault(

@@ -25,21 +25,12 @@ class QuoteReader implements QuoteReaderInterface
      */
     protected $quoteFacade;
 
-    /**
-     * @param \Spryker\Zed\SharedCart\Persistence\SharedCartRepositoryInterface $sharedCartRepository
-     * @param \Spryker\Zed\SharedCart\Dependency\Facade\SharedCartToQuoteFacadeInterface $quoteFacade
-     */
     public function __construct(SharedCartRepositoryInterface $sharedCartRepository, SharedCartToQuoteFacadeInterface $quoteFacade)
     {
         $this->sharedCartRepository = $sharedCartRepository;
         $this->quoteFacade = $quoteFacade;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\SharedQuoteCriteriaFilterTransfer $sharedQuoteCriteriaFilterTransfer
-     *
-     * @return \Generated\Shared\Transfer\QuoteCollectionTransfer
-     */
     public function findSharedQuoteCollectionBySharedQuoteCriteriaFilter(
         SharedQuoteCriteriaFilterTransfer $sharedQuoteCriteriaFilterTransfer
     ): QuoteCollectionTransfer {
@@ -54,12 +45,6 @@ class QuoteReader implements QuoteReaderInterface
         );
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteCollectionTransfer $quoteCollectionTransfer
-     * @param array $quotesIsDefaultFlagData
-     *
-     * @return \Generated\Shared\Transfer\QuoteCollectionTransfer
-     */
     protected function applyIsDefaultFlagForSharedQuotes(
         QuoteCollectionTransfer $quoteCollectionTransfer,
         array $quotesIsDefaultFlagData

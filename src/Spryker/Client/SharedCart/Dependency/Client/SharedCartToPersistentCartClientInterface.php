@@ -12,10 +12,5 @@ use Generated\Shared\Transfer\QuoteUpdateRequestTransfer;
 
 interface SharedCartToPersistentCartClientInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\QuoteUpdateRequestTransfer $quoteUpdateRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\QuoteResponseTransfer
-     */
     public function updateQuote(QuoteUpdateRequestTransfer $quoteUpdateRequestTransfer): QuoteResponseTransfer;
 }

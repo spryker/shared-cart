@@ -12,11 +12,6 @@ use Generated\Shared\Transfer\SharedQuoteCriteriaFilterTransfer;
 
 interface QuoteReaderInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\SharedQuoteCriteriaFilterTransfer $sharedQuoteCriteriaFilterTransfer
-     *
-     * @return \Generated\Shared\Transfer\QuoteCollectionTransfer
-     */
     public function findSharedQuoteCollectionBySharedQuoteCriteriaFilter(
         SharedQuoteCriteriaFilterTransfer $sharedQuoteCriteriaFilterTransfer
     ): QuoteCollectionTransfer;

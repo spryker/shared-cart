@@ -23,9 +23,6 @@ class PermissionResolver implements PermissionResolverInterface
      */
     protected $customerClient;
 
-    /**
-     * @param \Spryker\Client\SharedCart\Dependency\Client\SharedCartToCustomerClientInterface $customerClient
-     */
     public function __construct(
         SharedCartToCustomerClientInterface $customerClient
     ) {

@@ -22,9 +22,6 @@ class ReadSharedCartPermissionPlugin extends AbstractPlugin implements Executabl
      */
     public const KEY = 'ReadSharedCartPermissionPlugin';
 
-    /**
-     * @return string
-     */
     public function getKey(): string
     {
         return static::KEY;

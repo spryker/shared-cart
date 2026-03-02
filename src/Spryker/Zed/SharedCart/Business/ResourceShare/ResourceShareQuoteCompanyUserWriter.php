@@ -51,11 +51,6 @@ class ResourceShareQuoteCompanyUserWriter implements ResourceShareQuoteCompanyUs
      */
     protected $quoteCompanyUserWriter;
 
-    /**
-     * @param \Spryker\Zed\SharedCart\Persistence\SharedCartRepositoryInterface $sharedCartRepository
-     * @param \Spryker\Zed\SharedCart\Persistence\SharedCartEntityManagerInterface $sharedCartEntityManager
-     * @param \Spryker\Zed\SharedCart\Business\Model\QuoteCompanyUserWriterInterface $quoteCompanyUserWriter
-     */
     public function __construct(
         SharedCartRepositoryInterface $sharedCartRepository,
         SharedCartEntityManagerInterface $sharedCartEntityManager,
@@ -66,11 +61,6 @@ class ResourceShareQuoteCompanyUserWriter implements ResourceShareQuoteCompanyUs
         $this->quoteCompanyUserWriter = $quoteCompanyUserWriter;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ResourceShareRequestTransfer $resourceShareRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\ResourceShareResponseTransfer
-     */
     public function createCartShareForCompanyUser(ResourceShareRequestTransfer $resourceShareRequestTransfer): ResourceShareResponseTransfer
     {
         $shareOption = $resourceShareRequestTransfer->getResourceShare()
@@ -101,12 +91,6 @@ class ResourceShareQuoteCompanyUserWriter implements ResourceShareQuoteCompanyUs
             );
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ResourceShareRequestTransfer $resourceShareRequestTransfer
-     * @param \Generated\Shared\Transfer\ShareDetailTransfer $shareDetailTransfer
-     *
-     * @return \Generated\Shared\Transfer\ResourceShareResponseTransfer
-     */
     public function updateCartShareForCompanyUser(
         ResourceShareRequestTransfer $resourceShareRequestTransfer,
         ShareDetailTransfer $shareDetailTransfer
@@ -139,12 +123,6 @@ class ResourceShareQuoteCompanyUserWriter implements ResourceShareQuoteCompanyUs
             ->setResourceShare($resourceShareRequestTransfer->getResourceShare());
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ResourceShareRequestTransfer $resourceShareRequestTransfer
-     * @param \Generated\Shared\Transfer\QuotePermissionGroupTransfer $quotePermissionGroupTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShareCartRequestTransfer
-     */
     protected function buildShareCartRequestTransfer(
         ResourceShareRequestTransfer $resourceShareRequestTransfer,
         QuotePermissionGroupTransfer $quotePermissionGroupTransfer
@@ -166,11 +144,6 @@ class ResourceShareQuoteCompanyUserWriter implements ResourceShareQuoteCompanyUs
             ->addShareDetail($shareDetailTransfer);
     }
 
-    /**
-     * @param string $name
-     *
-     * @return \Generated\Shared\Transfer\QuotePermissionGroupTransfer|null
-     */
     protected function findQuotePermissionGroupByName(string $name): ?QuotePermissionGroupTransfer
     {
         $quotePermissionGroups = $this->sharedCartRepository->findQuotePermissionGroupList(

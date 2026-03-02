@@ -13,19 +13,8 @@ use Generated\Shared\Transfer\ShareDetailTransfer;
 
 interface ResourceShareQuoteCompanyUserWriterInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\ResourceShareRequestTransfer $resourceShareRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\ResourceShareResponseTransfer
-     */
     public function createCartShareForCompanyUser(ResourceShareRequestTransfer $resourceShareRequestTransfer): ResourceShareResponseTransfer;
 
-    /**
-     * @param \Generated\Shared\Transfer\ResourceShareRequestTransfer $resourceShareRequestTransfer
-     * @param \Generated\Shared\Transfer\ShareDetailTransfer $shareDetailTransfer
-     *
-     * @return \Generated\Shared\Transfer\ResourceShareResponseTransfer
-     */
     public function updateCartShareForCompanyUser(
         ResourceShareRequestTransfer $resourceShareRequestTransfer,
         ShareDetailTransfer $shareDetailTransfer

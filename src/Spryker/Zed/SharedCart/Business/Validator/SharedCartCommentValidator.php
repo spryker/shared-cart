@@ -42,20 +42,11 @@ class SharedCartCommentValidator implements SharedCartCommentValidatorInterface
      */
     protected $sharedCartRepository;
 
-    /**
-     * @param \Spryker\Zed\SharedCart\Persistence\SharedCartRepositoryInterface $sharedCartRepository
-     */
     public function __construct(SharedCartRepositoryInterface $sharedCartRepository)
     {
         $this->sharedCartRepository = $sharedCartRepository;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CommentRequestTransfer $commentRequestTransfer
-     * @param \Generated\Shared\Transfer\CommentValidationResponseTransfer $commentValidationResponseTransfer
-     *
-     * @return \Generated\Shared\Transfer\CommentValidationResponseTransfer
-     */
     public function validate(
         CommentRequestTransfer $commentRequestTransfer,
         CommentValidationResponseTransfer $commentValidationResponseTransfer
@@ -92,11 +83,6 @@ class SharedCartCommentValidator implements SharedCartCommentValidatorInterface
             ->addMessage($this->createMessageTransfer(static::GLOSSARY_KEY_COMMENT_VALIDATION_ACCESS_DENIED));
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CommentRequestTransfer $commentRequestTransfer
-     *
-     * @return bool
-     */
     protected function isCompanyUserProvided(CommentRequestTransfer $commentRequestTransfer): bool
     {
         return $commentRequestTransfer->getComment()

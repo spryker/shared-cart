@@ -79,9 +79,6 @@ class SharedCartFacadeTest extends Unit
      */
     protected $tester;
 
-    /**
-     * @return void
-     */
     public function testShareCartByResourceShareRequestShouldThrowExceptionWhenRequiredCustomerPropertyIsMissingInResourceShareRequestTransfer(): void
     {
         // Arrange
@@ -96,9 +93,6 @@ class SharedCartFacadeTest extends Unit
         $this->tester->getFacade()->shareCartByResourceShareRequest($resourceShareRequestTransfer);
     }
 
-    /**
-     * @return void
-     */
     public function testShareCartByResourceShareRequestShouldThrowExceptionWhenRequiredResourceSharePropertyIsMissingInResourceShareRequestTransfer(): void
     {
         // Arrange
@@ -144,9 +138,6 @@ class SharedCartFacadeTest extends Unit
         ));
     }
 
-    /**
-     * @return void
-     */
     public function testShareCartByResourceShareRequestShouldReturnErrorMessageWhenCompanyUserIsNotFoundByIdCompanyUser(): void
     {
         // Arrange
@@ -173,9 +164,6 @@ class SharedCartFacadeTest extends Unit
         ));
     }
 
-    /**
-     * @return void
-     */
     public function testShareCartByResourceShareRequestShouldReturnErrorMessageWhenQuotePermissionGroupIsNotFoundByShareOption(): void
     {
         // Arrange
@@ -204,9 +192,6 @@ class SharedCartFacadeTest extends Unit
         ));
     }
 
-    /**
-     * @return void
-     */
     public function testShareCartByResourceShareRequestShouldShareCartWithReadOnlyAccessWhenAllParametersAreCorrect(): void
     {
         // Arrange
@@ -240,9 +225,6 @@ class SharedCartFacadeTest extends Unit
         $this->assertNotNull($resourceShareResponseTransfer->getResourceShare());
     }
 
-    /**
-     * @return void
-     */
     public function testShareCartByResourceShareRequestShouldShareCartWithFullAccessWhenAllParametersAreCorrect(): void
     {
         // Arrange
@@ -277,9 +259,6 @@ class SharedCartFacadeTest extends Unit
         $this->assertNotNull($resourceShareResponseTransfer->getResourceShare());
     }
 
-    /**
-     * @return void
-     */
     public function testShareCartByResourceShareRequestShouldReturnErrorMessageWhenWhenQuoteDoesNotExistsAnyMore(): void
     {
         // Arrange
@@ -311,9 +290,6 @@ class SharedCartFacadeTest extends Unit
         ));
     }
 
-    /**
-     * @return void
-     */
     public function testGetCustomersSharingSameQuoteShouldReturnQuoteOwnerInCollection(): void
     {
         //Arrange
@@ -348,9 +324,6 @@ class SharedCartFacadeTest extends Unit
         $this->assertCount(2, $customerCollectionTransfer->getCustomers());
     }
 
-    /**
-     * @return void
-     */
     public function testGetCustomersSharingSameQuoteShouldReturnCustomerCollectionWithCustomerWithAccessToQuote(): void
     {
         //Arrange
@@ -389,9 +362,6 @@ class SharedCartFacadeTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testGetShareDetailsByIdQuoteShouldReturnNoCompanyUsersForAnonymizedCustomers(): void
     {
         // Arrange
@@ -430,9 +400,6 @@ class SharedCartFacadeTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testGetSharedCartDetailsShouldReturnNoCompanyUsersForAnonymizedCustomers(): void
     {
         // Arrange
@@ -474,12 +441,6 @@ class SharedCartFacadeTest extends Unit
         );
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ResourceShareResponseTransfer $resourceShareResponseTransfer
-     * @param string $errorMessage
-     *
-     * @return bool
-     */
     protected function hasResourceShareResponseTransferErrorMessage(
         ResourceShareResponseTransfer $resourceShareResponseTransfer,
         string $errorMessage

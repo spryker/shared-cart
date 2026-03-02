@@ -12,10 +12,5 @@ use Generated\Shared\Transfer\ResourceShareResponseTransfer;
 
 interface SwitchDefaultCartByResourceShareInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\ResourceShareRequestTransfer $resourceShareRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\ResourceShareResponseTransfer
-     */
     public function switchDefaultCartByResourceShare(ResourceShareRequestTransfer $resourceShareRequestTransfer): ResourceShareResponseTransfer;
 }

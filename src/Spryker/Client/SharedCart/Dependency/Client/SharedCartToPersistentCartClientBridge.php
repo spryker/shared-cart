@@ -25,11 +25,6 @@ class SharedCartToPersistentCartClientBridge implements SharedCartToPersistentCa
         $this->persistentCartClient = $persistentCartClient;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteUpdateRequestTransfer $quoteUpdateRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\QuoteResponseTransfer
-     */
     public function updateQuote(QuoteUpdateRequestTransfer $quoteUpdateRequestTransfer): QuoteResponseTransfer
     {
         return $this->persistentCartClient->updateQuote($quoteUpdateRequestTransfer);

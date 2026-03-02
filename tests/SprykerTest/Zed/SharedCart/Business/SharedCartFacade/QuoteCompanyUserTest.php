@@ -61,9 +61,6 @@ class QuoteCompanyUserTest extends Unit
      */
     protected $readOnlyQuotePermissionGroup;
 
-    /**
-     * @return void
-     */
     protected function setUp(): void
     {
         parent::setUp();
@@ -87,9 +84,6 @@ class QuoteCompanyUserTest extends Unit
         ]);
     }
 
-    /**
-     * @return void
-     */
     public function testFindShareDetailsCollectionByShareDetailCriteriaShouldReturnShareDetailCollectionWithOneShareDetail(): void
     {
         //Arrange
@@ -110,9 +104,6 @@ class QuoteCompanyUserTest extends Unit
         $this->assertSame($quoteCompanyUserTransfer->getIdQuoteCompanyUser(), $shareDetailTransfer->getIdQuoteCompanyUser());
     }
 
-    /**
-     * @return void
-     */
     public function testCreateQuoteCompanyUserShouldCreateQuoteCompanyUser(): void
     {
         //Arrange
@@ -147,9 +138,6 @@ class QuoteCompanyUserTest extends Unit
         $this->assertEquals($this->readOnlyQuotePermissionGroup->getIdQuotePermissionGroup(), $shareDetailTransfer->getQuotePermissionGroup()->getIdQuotePermissionGroup());
     }
 
-    /**
-     * @return void
-     */
     public function testCreateQuoteCompanyUserShouldFailOnNoIdCompanyUserProvided(): void
     {
         //Arrange
@@ -170,9 +158,6 @@ class QuoteCompanyUserTest extends Unit
         $this->tester->getFacade()->createQuoteCompanyUser($shareCartRequestTransfer);
     }
 
-    /**
-     * @return void
-     */
     public function testCreateQuoteCompanyUserShouldFailOnNoShareDetailProvided(): void
     {
         //Arrange
@@ -185,9 +170,6 @@ class QuoteCompanyUserTest extends Unit
         $this->tester->getFacade()->createQuoteCompanyUser($shareCartRequestTransfer);
     }
 
-    /**
-     * @return void
-     */
     public function testCreateQuoteCompanyUserShouldFailOnNoQuotePermissionGroupProvided(): void
     {
         //Arrange
@@ -212,9 +194,6 @@ class QuoteCompanyUserTest extends Unit
         $this->tester->getFacade()->createQuoteCompanyUser($shareCartRequestTransfer);
     }
 
-    /**
-     * @return void
-     */
     public function testUpdateQuoteCompanyUserPermissionGroupShouldUpdateQuotePermissionGroupForQuoteCompanyUser(): void
     {
         //Arrange
@@ -249,9 +228,6 @@ class QuoteCompanyUserTest extends Unit
         $this->assertEquals($fullAccessQuotePermissionGroup->getIdQuotePermissionGroup(), $shareDetailTransfer->getQuotePermissionGroup()->getIdQuotePermissionGroup());
     }
 
-    /**
-     * @return void
-     */
     public function testUpdateQuoteCompanyUserPermissionGroupShouldFailOnNoIdQuoteCompanyUserProvided(): void
     {
         //Arrange
@@ -273,9 +249,6 @@ class QuoteCompanyUserTest extends Unit
         $this->tester->getFacade()->updateQuoteCompanyUserPermissionGroup($shareCartRequestTransfer);
     }
 
-    /**
-     * @return void
-     */
     public function testUpdateQuoteCompanyUserPermissionGroupShouldFailOnNoShareDetailProvided(): void
     {
         //Arrange
@@ -287,9 +260,6 @@ class QuoteCompanyUserTest extends Unit
         $this->tester->getFacade()->updateQuoteCompanyUserPermissionGroup($shareCartRequestTransfer);
     }
 
-    /**
-     * @return void
-     */
     public function testUpdateQuoteCompanyUserPermissionGroupShouldFailOnNoIdQuotePermissionGroupProvided(): void
     {
         //Arrange
@@ -309,9 +279,6 @@ class QuoteCompanyUserTest extends Unit
         $this->tester->getFacade()->updateQuoteCompanyUserPermissionGroup($shareCartRequestTransfer);
     }
 
-    /**
-     * @return void
-     */
     public function testDeleteQuoteCompanyUserShouldDeleteQuoteCompanyUser(): void
     {
         //Arrange
@@ -335,9 +302,6 @@ class QuoteCompanyUserTest extends Unit
         $this->assertCount(0, $shareDetailCollectionTransfer->getShareDetails());
     }
 
-    /**
-     * @return void
-     */
     public function testDeleteQuoteCompanyUserShouldFailOnNoQuoteCompanyUserProvided(): void
     {
         //Arrange
@@ -351,9 +315,6 @@ class QuoteCompanyUserTest extends Unit
         $this->tester->getFacade()->deleteQuoteCompanyUser($shareCartRequestTransfer);
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\ShareDetailCriteriaFilterTransfer
-     */
     protected function getShareDetailCriteriaTransfer(): ShareDetailCriteriaFilterTransfer
     {
         return (new ShareDetailCriteriaFilterTransfer())

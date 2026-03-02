@@ -20,18 +20,8 @@ use Generated\Shared\Transfer\SharedQuoteCriteriaFilterTransfer;
 
 interface SharedCartRepositoryInterface
 {
-    /**
-     * @param int $idCompanyUser
-     *
-     * @return \Generated\Shared\Transfer\PermissionCollectionTransfer
-     */
     public function findPermissionsByIdCompanyUser(int $idCompanyUser): PermissionCollectionTransfer;
 
-    /**
-     * @param string $customerReference
-     *
-     * @return \Generated\Shared\Transfer\PermissionCollectionTransfer
-     */
     public function findPermissionsByCustomer(string $customerReference): PermissionCollectionTransfer;
 
     /**
@@ -62,19 +52,8 @@ interface SharedCartRepositoryInterface
      */
     public function findQuoteCompanyUserIdCollection(int $idQuote): array;
 
-    /**
-     * @param string $customerReference
-     *
-     * @return string
-     */
     public function getCustomerIdByReference(string $customerReference): string;
 
-    /**
-     * @param int $idQuote
-     * @param int $idCompanyUser
-     *
-     * @return bool
-     */
     public function isSharedQuoteDefault(int $idQuote, int $idCompanyUser): bool;
 
     /**
@@ -84,43 +63,16 @@ interface SharedCartRepositoryInterface
      */
     public function findAllCompanyUserQuotePermissionGroupIdIndexes(int $idQuote): array;
 
-    /**
-     * @param int $idQuote
-     * @param bool $excludeAnonymizedCustomers
-     *
-     * @return \Generated\Shared\Transfer\ShareDetailCollectionTransfer
-     */
     public function findShareDetailsByQuoteId(int $idQuote, bool $excludeAnonymizedCustomers = false): ShareDetailCollectionTransfer;
 
-    /**
-     * @param int $idQuotePermissionGroup
-     *
-     * @return \Generated\Shared\Transfer\QuotePermissionGroupTransfer|null
-     */
     public function findQuotePermissionGroupById(int $idQuotePermissionGroup): ?QuotePermissionGroupTransfer;
 
-    /**
-     * @param \Generated\Shared\Transfer\ShareDetailCriteriaFilterTransfer $shareDetailCriteriaFilterTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShareDetailCollectionTransfer
-     */
     public function getShareDetailCollectionByShareDetailCriteria(
         ShareDetailCriteriaFilterTransfer $shareDetailCriteriaFilterTransfer
     ): ShareDetailCollectionTransfer;
 
-    /**
-     * @param string $quoteCompanyUserUuid
-     *
-     * @return \Generated\Shared\Transfer\QuoteCompanyUserTransfer|null
-     */
     public function findQuoteCompanyUserByUuid(string $quoteCompanyUserUuid): ?QuoteCompanyUserTransfer;
 
-    /**
-     * @param int $idQuote
-     * @param int $idCompanyUser
-     *
-     * @return \Generated\Shared\Transfer\ShareDetailTransfer|null
-     */
     public function findShareDetailByIdQuoteAndIdCompanyUser(int $idQuote, int $idCompanyUser): ?ShareDetailTransfer;
 
     /**
@@ -131,10 +83,5 @@ interface SharedCartRepositoryInterface
      */
     public function getSharedCartDetails(ShareCartRequestTransfer $shareCartRequestTransfer, bool $excludeAnonymizedCustomers = false): array;
 
-    /**
-     * @param int $idQuote
-     *
-     * @return \Generated\Shared\Transfer\CustomerCollectionTransfer
-     */
     public function getCustomerCollectionByQuote(int $idQuote): CustomerCollectionTransfer;
 }

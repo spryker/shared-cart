@@ -25,21 +25,12 @@ class CustomerPermissionQuoteResponseExpander implements QuoteResponseExpanderIn
      */
     protected $sharedCartRepository;
 
-    /**
-     * @param \Spryker\Zed\SharedCart\Dependency\Facade\SharedCartToCustomerFacadeInterface $customerFacade
-     * @param \Spryker\Zed\SharedCart\Persistence\SharedCartRepositoryInterface $sharedCartRepository
-     */
     public function __construct(SharedCartToCustomerFacadeInterface $customerFacade, SharedCartRepositoryInterface $sharedCartRepository)
     {
         $this->customerFacade = $customerFacade;
         $this->sharedCartRepository = $sharedCartRepository;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteResponseTransfer $quoteResponseTransfer
-     *
-     * @return \Generated\Shared\Transfer\QuoteResponseTransfer
-     */
     public function expand(QuoteResponseTransfer $quoteResponseTransfer): QuoteResponseTransfer
     {
         $customerTransfer = $quoteResponseTransfer->requireCustomer()->getCustomer();
@@ -48,11 +39,6 @@ class CustomerPermissionQuoteResponseExpander implements QuoteResponseExpanderIn
         return $quoteResponseTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
-     *
-     * @return \Generated\Shared\Transfer\PermissionCollectionTransfer
-     */
     protected function getPermissionCollection(CustomerTransfer $customerTransfer): PermissionCollectionTransfer
     {
         if ($customerTransfer->getCompanyUserTransfer()) {

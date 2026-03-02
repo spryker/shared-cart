@@ -36,11 +36,6 @@ use Spryker\Zed\Kernel\Persistence\AbstractRepository;
  */
 class SharedCartRepository extends AbstractRepository implements SharedCartRepositoryInterface
 {
-    /**
-     * @param int $idCompanyUser
-     *
-     * @return \Generated\Shared\Transfer\PermissionCollectionTransfer
-     */
     public function findPermissionsByIdCompanyUser(int $idCompanyUser): PermissionCollectionTransfer
     {
         $permissionCollectionTransfer = new PermissionCollectionTransfer();
@@ -110,11 +105,6 @@ class SharedCartRepository extends AbstractRepository implements SharedCartRepos
         return $groupedQuoteIds;
     }
 
-    /**
-     * @param string $customerReference
-     *
-     * @return \Generated\Shared\Transfer\PermissionCollectionTransfer
-     */
     public function findPermissionsByCustomer(string $customerReference): PermissionCollectionTransfer
     {
         $permissionCollectionTransfer = new PermissionCollectionTransfer();
@@ -370,11 +360,6 @@ class SharedCartRepository extends AbstractRepository implements SharedCartRepos
         return $quotePermissionGroupTransferList;
     }
 
-    /**
-     * @param string $customerReference
-     *
-     * @return string
-     */
     public function getCustomerIdByReference(string $customerReference): string
     {
         return (string)$this->getFactory()
@@ -385,12 +370,6 @@ class SharedCartRepository extends AbstractRepository implements SharedCartRepos
             ->getIdCustomer();
     }
 
-    /**
-     * @param int $idQuote
-     * @param int $idCompanyUser
-     *
-     * @return bool
-     */
     public function isSharedQuoteDefault(int $idQuote, int $idCompanyUser): bool
     {
         return $this->getFactory()
@@ -429,12 +408,6 @@ class SharedCartRepository extends AbstractRepository implements SharedCartRepos
         return $quoteCompanyUserQuery->find();
     }
 
-    /**
-     * @param int $idQuote
-     * @param bool $excludeAnonymizedCustomers
-     *
-     * @return \Generated\Shared\Transfer\ShareDetailCollectionTransfer
-     */
     public function findShareDetailsByQuoteId(int $idQuote, bool $excludeAnonymizedCustomers = false): ShareDetailCollectionTransfer
     {
         $quoteCompanyUserEntities = $this->getQuoteCompanyUserEntities([$idQuote], $excludeAnonymizedCustomers);
@@ -461,11 +434,6 @@ class SharedCartRepository extends AbstractRepository implements SharedCartRepos
             ->mapShareDetailCollectionByQuoteId($quoteCompanyUserEntities, $permissionGroupList);
     }
 
-    /**
-     * @param int $idQuotePermissionGroup
-     *
-     * @return \Generated\Shared\Transfer\QuotePermissionGroupTransfer|null
-     */
     public function findQuotePermissionGroupById(int $idQuotePermissionGroup): ?QuotePermissionGroupTransfer
     {
         $quotePermissionGroupEntity = $this->getFactory()
@@ -484,11 +452,6 @@ class SharedCartRepository extends AbstractRepository implements SharedCartRepos
             );
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShareDetailCriteriaFilterTransfer $shareDetailCriteriaFilterTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShareDetailCollectionTransfer
-     */
     public function getShareDetailCollectionByShareDetailCriteria(
         ShareDetailCriteriaFilterTransfer $shareDetailCriteriaFilterTransfer
     ): ShareDetailCollectionTransfer {
@@ -511,11 +474,6 @@ class SharedCartRepository extends AbstractRepository implements SharedCartRepos
             ->mapShareDetailCollection($quoteCompanyUserEntities, $this->findQuotePermissionGroupList(new QuotePermissionGroupCriteriaFilterTransfer()));
     }
 
-    /**
-     * @param string $quoteCompanyUserUuid
-     *
-     * @return \Generated\Shared\Transfer\QuoteCompanyUserTransfer|null
-     */
     public function findQuoteCompanyUserByUuid(string $quoteCompanyUserUuid): ?QuoteCompanyUserTransfer
     {
         $quoteCompanyUser = $this->getFactory()
@@ -533,12 +491,6 @@ class SharedCartRepository extends AbstractRepository implements SharedCartRepos
             ->mapQuoteCompanyUserEntityToQuoteCompanyUserTransfer($quoteCompanyUser, new QuoteCompanyUserTransfer());
     }
 
-    /**
-     * @param \Orm\Zed\SharedCart\Persistence\SpyQuoteCompanyUserQuery $quoteCompanyUserQuery
-     * @param \Generated\Shared\Transfer\ShareDetailCriteriaFilterTransfer $shareDetailCriteriaFilterTransfer
-     *
-     * @return \Orm\Zed\SharedCart\Persistence\SpyQuoteCompanyUserQuery
-     */
     protected function applySharedDetailCriteriaFiltersToQuoteCompanyUserQuery(
         SpyQuoteCompanyUserQuery $quoteCompanyUserQuery,
         ShareDetailCriteriaFilterTransfer $shareDetailCriteriaFilterTransfer
@@ -556,12 +508,6 @@ class SharedCartRepository extends AbstractRepository implements SharedCartRepos
         return $quoteCompanyUserQuery;
     }
 
-    /**
-     * @param int $idQuote
-     * @param int $idCompanyUser
-     *
-     * @return \Generated\Shared\Transfer\ShareDetailTransfer|null
-     */
     public function findShareDetailByIdQuoteAndIdCompanyUser(int $idQuote, int $idCompanyUser): ?ShareDetailTransfer
     {
         $quoteCompanyUserEntity = $this->getFactory()

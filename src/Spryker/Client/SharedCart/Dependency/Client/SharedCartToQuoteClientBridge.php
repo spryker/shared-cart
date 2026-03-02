@@ -24,11 +24,6 @@ class SharedCartToQuoteClientBridge implements SharedCartToQuoteClientInterface
         $this->quoteClient = $quoteClient;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return bool
-     */
     public function isQuoteLocked(QuoteTransfer $quoteTransfer): bool
     {
         return $this->quoteClient->isQuoteLocked($quoteTransfer);

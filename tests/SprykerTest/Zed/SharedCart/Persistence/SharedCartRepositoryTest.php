@@ -37,9 +37,6 @@ class SharedCartRepositoryTest extends Unit
      */
     protected $tester;
 
-    /**
-     * @return void
-     */
     public function testFindPermissionsByIdCompanyUser(): void
     {
         // Arrange
@@ -76,9 +73,6 @@ class SharedCartRepositoryTest extends Unit
         }
     }
 
-    /**
-     * @return void
-     */
     public function testFindPermissionsByCustomerShouldReturnPermissionsWithQuotes(): void
     {
         // Arrange

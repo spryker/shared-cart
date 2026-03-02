@@ -28,10 +28,6 @@ class CartDeleteChecker implements CartDeleteCheckerInterface
      */
     protected $customerClient;
 
-    /**
-     * @param \Spryker\Client\SharedCart\Dependency\Client\SharedCartToMultiCartClientInterface $multiCartClient
-     * @param \Spryker\Client\SharedCart\Dependency\Client\SharedCartToCustomerClientInterface $customerClient
-     */
     public function __construct(
         SharedCartToMultiCartClientInterface $multiCartClient,
         SharedCartToCustomerClientInterface $customerClient
@@ -40,11 +36,6 @@ class CartDeleteChecker implements CartDeleteCheckerInterface
         $this->customerClient = $customerClient;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return bool
-     */
     public function isQuoteDeletable(QuoteTransfer $quoteTransfer): bool
     {
         $customerTransfer = $this->customerClient->getCustomer();
@@ -65,12 +56,6 @@ class CartDeleteChecker implements CartDeleteCheckerInterface
         return false;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
-     *
-     * @return bool
-     */
     protected function isQuoteOwner(QuoteTransfer $quoteTransfer, CustomerTransfer $customerTransfer): bool
     {
         return $customerTransfer->getCustomerReference() === $quoteTransfer->getCustomerReference();

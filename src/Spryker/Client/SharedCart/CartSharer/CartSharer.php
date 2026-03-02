@@ -65,14 +65,6 @@ class CartSharer implements CartSharerInterface
      */
     protected $quoteClient;
 
-    /**
-     * @param \Spryker\Client\SharedCart\Zed\SharedCartStubInterface $sharedCartStub
-     * @param \Spryker\Client\SharedCart\Dependency\Client\SharedCartToMultiCartClientInterface $multiCartClient
-     * @param \Spryker\Client\SharedCart\Dependency\Client\SharedCartToPersistentCartClientInterface $persistentCartClient
-     * @param \Spryker\Client\SharedCart\Dependency\Client\SharedCartToMessengerClientInterface $messengerClient
-     * @param \Spryker\Client\SharedCart\Dependency\Client\SharedCartToCustomerClientInterface $customerClient
-     * @param \Spryker\Client\SharedCart\Dependency\Client\SharedCartToQuoteClientInterface $quoteClient
-     */
     public function __construct(
         SharedCartStubInterface $sharedCartStub,
         SharedCartToMultiCartClientInterface $multiCartClient,
@@ -135,11 +127,6 @@ class CartSharer implements CartSharerInterface
         return $this->persistentCartClient->updateQuote($quoteUpdateRequestTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShareCartRequestTransfer $shareCartRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\QuoteResponseTransfer
-     */
     public function dismissSharedCart(ShareCartRequestTransfer $shareCartRequestTransfer): QuoteResponseTransfer
     {
         if (!$this->can(ReadSharedCartPermissionPlugin::KEY, $shareCartRequestTransfer->getIdQuote())) {
@@ -164,11 +151,6 @@ class CartSharer implements CartSharerInterface
         return $this->persistentCartClient->updateQuote($quoteUpdateRequestTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShareCartRequestTransfer $shareCartRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\QuoteResponseTransfer
-     */
     public function updateQuotePermissions(ShareCartRequestTransfer $shareCartRequestTransfer): QuoteResponseTransfer
     {
         $quoteTransfer = $this->getQuote($shareCartRequestTransfer->getIdQuote());
@@ -180,12 +162,6 @@ class CartSharer implements CartSharerInterface
         return $this->persistentCartClient->updateQuote($quoteUpdateRequestTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShareCartRequestTransfer $shareCartRequestTransfer
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return \Generated\Shared\Transfer\QuoteTransfer
-     */
     protected function updateQuoteShareDetailsAccordinglyToShareCartRequest(
         ShareCartRequestTransfer $shareCartRequestTransfer,
         QuoteTransfer $quoteTransfer
@@ -218,12 +194,6 @@ class CartSharer implements CartSharerInterface
         return $filteredShareDetails;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShareCartRequestTransfer $shareCartRequestTransfer
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return bool
-     */
     protected function validateShareCartRequest(ShareCartRequestTransfer $shareCartRequestTransfer, QuoteTransfer $quoteTransfer): bool
     {
         foreach ($quoteTransfer->getShareDetails() as $shareDetailTransfer) {
@@ -258,11 +228,6 @@ class CartSharer implements CartSharerInterface
         );
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShareCartRequestTransfer $shareCartRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShareDetailTransfer
-     */
     protected function createShareCartDetail(ShareCartRequestTransfer $shareCartRequestTransfer): ShareDetailTransfer
     {
         $shareDetailTransfer = new ShareDetailTransfer();
@@ -272,11 +237,6 @@ class CartSharer implements CartSharerInterface
         return $shareDetailTransfer;
     }
 
-    /**
-     * @param int $idQuotePermissionGroup
-     *
-     * @return \Generated\Shared\Transfer\QuotePermissionGroupTransfer|null
-     */
     protected function findQuotePermissionGroup(int $idQuotePermissionGroup): ?QuotePermissionGroupTransfer
     {
         $criteriaFilterTransfer = new QuotePermissionGroupCriteriaFilterTransfer();
@@ -309,11 +269,6 @@ class CartSharer implements CartSharerInterface
         return $filteredShareDetailTransferList;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return \Generated\Shared\Transfer\QuoteUpdateRequestTransfer
-     */
     protected function createQuoteUpdateRequest(QuoteTransfer $quoteTransfer): QuoteUpdateRequestTransfer
     {
         $quoteUpdateRequestTransfer = new QuoteUpdateRequestTransfer();

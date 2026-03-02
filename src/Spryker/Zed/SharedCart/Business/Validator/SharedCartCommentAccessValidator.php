@@ -32,10 +32,6 @@ class SharedCartCommentAccessValidator implements SharedCartCommentAccessValidat
      */
     protected SharedCartToQuoteFacadeInterface $quoteFacadeInterface;
 
-    /**
-     * @param \Spryker\Zed\SharedCart\Persistence\SharedCartRepositoryInterface $sharedCartRepository
-     * @param \Spryker\Zed\SharedCart\Dependency\Facade\SharedCartToQuoteFacadeInterface $quoteFacadeInterface
-     */
     public function __construct(
         SharedCartRepositoryInterface $sharedCartRepository,
         SharedCartToQuoteFacadeInterface $quoteFacadeInterface
@@ -44,12 +40,6 @@ class SharedCartCommentAccessValidator implements SharedCartCommentAccessValidat
         $this->quoteFacadeInterface = $quoteFacadeInterface;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CommentRequestTransfer $commentRequestTransfer
-     * @param \Generated\Shared\Transfer\CommentValidationResponseTransfer $commentValidationResponseTransfer
-     *
-     * @return \Generated\Shared\Transfer\CommentValidationResponseTransfer
-     */
     public function validate(
         CommentRequestTransfer $commentRequestTransfer,
         CommentValidationResponseTransfer $commentValidationResponseTransfer
@@ -90,22 +80,12 @@ class SharedCartCommentAccessValidator implements SharedCartCommentAccessValidat
         return $commentValidationResponseTransfer->setIsSuccessful($commentValidationResponseTransfer->getIsSuccessful() ?? true);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CommentRequestTransfer $commentRequestTransfer
-     *
-     * @return bool
-     */
     protected function isCompanyUserProvided(CommentRequestTransfer $commentRequestTransfer): bool
     {
         return $commentRequestTransfer->getCommentOrFail()->getCustomerOrFail()->getCompanyUserTransfer()
             && $commentRequestTransfer->getCommentOrFail()->getCustomerOrFail()->getCompanyUserTransferOrFail()->getIdCompanyUser();
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CommentRequestTransfer $commentRequestTransfer
-     *
-     * @return bool
-     */
     protected function isCustomerProvided(CommentRequestTransfer $commentRequestTransfer): bool
     {
         return $commentRequestTransfer->getCommentOrFail()->getCustomer()
@@ -125,12 +105,6 @@ class SharedCartCommentAccessValidator implements SharedCartCommentAccessValidat
             ->setParameters($parameters);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CommentRequestTransfer $commentRequestTransfer
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return bool
-     */
     protected function isQuoteOwnedByCustomer(CommentRequestTransfer $commentRequestTransfer, QuoteTransfer $quoteTransfer): bool
     {
         return $commentRequestTransfer->getCommentOrFail()->getCustomerOrFail()->getCustomerReferenceOrFail() === $quoteTransfer->getCustomerReferenceOrFail();

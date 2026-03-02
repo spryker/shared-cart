@@ -22,12 +22,6 @@ class SharedCartHelper extends Module
 {
     use LocatorHelperTrait;
 
-    /**
-     * @param string $name
-     * @param array $permissionKeys
-     *
-     * @return \Generated\Shared\Transfer\SpyQuotePermissionGroupEntityTransfer
-     */
     public function haveQuotePermissionGroup(string $name, array $permissionKeys): SpyQuotePermissionGroupEntityTransfer
     {
         $quotePermissionGroupEntity = new SpyQuotePermissionGroup();
@@ -53,13 +47,6 @@ class SharedCartHelper extends Module
         return $quotePermissionGroupEntityTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CompanyUserTransfer $companyUserTransfer
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     * @param \Generated\Shared\Transfer\SpyQuotePermissionGroupEntityTransfer $spyQuotePermissionGroupEntityTransfer
-     *
-     * @return \Generated\Shared\Transfer\SpyQuoteCompanyUserEntityTransfer
-     */
     public function haveQuoteCompanyUser(
         CompanyUserTransfer $companyUserTransfer,
         QuoteTransfer $quoteTransfer,

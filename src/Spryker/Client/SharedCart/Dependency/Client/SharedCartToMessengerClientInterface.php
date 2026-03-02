@@ -9,10 +9,5 @@ namespace Spryker\Client\SharedCart\Dependency\Client;
 
 interface SharedCartToMessengerClientInterface
 {
-    /**
-     * @param string $message
-     *
-     * @return void
-     */
     public function addErrorMessage(string $message): void;
 }

@@ -38,9 +38,6 @@ class SharedCartPersistenceTester extends Actor
      */
     public const MAPPING_KEY = 1;
 
-    /**
-     * @return \Propel\Runtime\Collection\ObjectCollection
-     */
     public function getQuoteCompanyUserCollection(): ObjectCollection
     {
         $quoteCompanyUserEntity = new SpyQuoteCompanyUser();

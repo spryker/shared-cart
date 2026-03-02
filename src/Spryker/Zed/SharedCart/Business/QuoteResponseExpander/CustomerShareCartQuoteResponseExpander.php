@@ -27,10 +27,6 @@ class CustomerShareCartQuoteResponseExpander implements QuoteResponseExpanderInt
      */
     protected $storeFacade;
 
-    /**
-     * @param \Spryker\Zed\SharedCart\Business\Model\QuoteReaderInterface $quoteReader
-     * @param \Spryker\Zed\SharedCart\Dependency\Facade\SharedCartToStoreFacadeInterface $storeFacade
-     */
     public function __construct(
         QuoteReaderInterface $quoteReader,
         SharedCartToStoreFacadeInterface $storeFacade
@@ -39,11 +35,6 @@ class CustomerShareCartQuoteResponseExpander implements QuoteResponseExpanderInt
         $this->storeFacade = $storeFacade;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteResponseTransfer $quoteResponseTransfer
-     *
-     * @return \Generated\Shared\Transfer\QuoteResponseTransfer
-     */
     public function expand(QuoteResponseTransfer $quoteResponseTransfer): QuoteResponseTransfer
     {
         $customerTransfer = $quoteResponseTransfer->requireCustomer()
@@ -62,12 +53,6 @@ class CustomerShareCartQuoteResponseExpander implements QuoteResponseExpanderInt
         return $this->replaceCurrentQuoteFromList($quoteResponseTransfer, $sharedQuoteCollectionTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
-     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
-     *
-     * @return \Generated\Shared\Transfer\QuoteCollectionTransfer
-     */
     protected function findSharedCustomerQuotesByStore(CustomerTransfer $customerTransfer, StoreTransfer $storeTransfer): QuoteCollectionTransfer
     {
         if ($customerTransfer->getCompanyUserTransfer()) {
@@ -81,12 +66,6 @@ class CustomerShareCartQuoteResponseExpander implements QuoteResponseExpanderInt
         return new QuoteCollectionTransfer();
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteResponseTransfer $quoteResponseTransfer
-     * @param \Generated\Shared\Transfer\QuoteCollectionTransfer $sharedQuoteCollectionTransfer
-     *
-     * @return \Generated\Shared\Transfer\QuoteResponseTransfer
-     */
     protected function replaceCurrentQuoteFromList(
         QuoteResponseTransfer $quoteResponseTransfer,
         QuoteCollectionTransfer $sharedQuoteCollectionTransfer
@@ -103,12 +82,6 @@ class CustomerShareCartQuoteResponseExpander implements QuoteResponseExpanderInt
         return $quoteResponseTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteCollectionTransfer $sharedQuoteCollectionTransfer
-     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
-     *
-     * @return void
-     */
     protected function populateSharedQuoteCollectionWithCustomer(
         QuoteCollectionTransfer $sharedQuoteCollectionTransfer,
         CustomerTransfer $customerTransfer
