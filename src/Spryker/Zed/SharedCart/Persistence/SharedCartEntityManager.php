@@ -13,6 +13,8 @@ use Generated\Shared\Transfer\QuotePermissionGroupTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 use Generated\Shared\Transfer\ShareDetailTransfer;
 use Generated\Shared\Transfer\SpyQuoteCompanyUserEntityTransfer;
+use Orm\Zed\SharedCart\Persistence\Map\SpyQuoteCompanyUserTableMap;
+use Propel\Runtime\ActiveQuery\Criteria;
 use Spryker\Zed\Kernel\Persistence\AbstractEntityManager;
 
 /**
@@ -86,9 +88,21 @@ class SharedCartEntityManager extends AbstractEntityManager implements SharedCar
 
     public function resetQuoteDefaultFlagByCustomer(int $idCompanyUser): void
     {
-        $this->getFactory()
+        $idsQuoteCompanyUser = $this->getFactory()
             ->createQuoteCompanyUserQuery()
             ->filterByFkCompanyUser($idCompanyUser)
+            ->filterByIsDefault(true)
+            ->select(SpyQuoteCompanyUserTableMap::COL_ID_QUOTE_COMPANY_USER)
+            ->find()
+            ->toArray();
+
+        if (!$idsQuoteCompanyUser) {
+            return;
+        }
+
+        $this->getFactory()
+            ->createQuoteCompanyUserQuery()
+            ->filterByIdQuoteCompanyUser($idsQuoteCompanyUser, Criteria::IN)
             ->update(['IsDefault' => false]);
     }
 

@@ -50,13 +50,15 @@ class SharedCartHelper extends Module
     public function haveQuoteCompanyUser(
         CompanyUserTransfer $companyUserTransfer,
         QuoteTransfer $quoteTransfer,
-        SpyQuotePermissionGroupEntityTransfer $spyQuotePermissionGroupEntityTransfer
+        SpyQuotePermissionGroupEntityTransfer $spyQuotePermissionGroupEntityTransfer,
+        bool $isDefault = false
     ): SpyQuoteCompanyUserEntityTransfer {
         $quoteCompanyUserEntity = new SpyQuoteCompanyUser();
         $quoteCompanyUserEntity
             ->setFkCompanyUser($companyUserTransfer->requireIdCompanyUser()->getIdCompanyUser())
             ->setFkQuote($quoteTransfer->requireIdQuote()->getIdQuote())
             ->setFkQuotePermissionGroup($spyQuotePermissionGroupEntityTransfer->requireIdQuotePermissionGroup()->getIdQuotePermissionGroup())
+            ->setIsDefault($isDefault)
             ->save();
 
         $quoteCompanyUserEntityTransfer = new SpyQuoteCompanyUserEntityTransfer();
