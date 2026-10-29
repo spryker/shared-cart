@@ -104,6 +104,11 @@ class SharedCartEntityManager extends AbstractEntityManager implements SharedCar
             ->createQuoteCompanyUserQuery()
             ->filterByIdQuoteCompanyUser($idsQuoteCompanyUser, Criteria::IN)
             ->update(['IsDefault' => false]);
+
+        // See MultiCartEntityManager::resetQuoteDefaultFlagByCustomer(): Propel keeps the instance pool
+        // after an update by primary key.
+        SpyQuoteCompanyUserTableMap::clearInstancePool();
+        SpyQuoteCompanyUserTableMap::clearRelatedInstancePool();
     }
 
     public function deleteQuoteCompanyUserByQuote(QuoteTransfer $quoteTransfer): void
