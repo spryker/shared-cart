@@ -7,9 +7,9 @@
 
 namespace Spryker\Shared\SharedCart;
 
-use Spryker\Shared\Kernel\AbstractBundleConfig;
+use Spryker\Shared\Kernel\AbstractSharedConfig;
 
-class SharedCartConfig extends AbstractBundleConfig
+class SharedCartConfig extends AbstractSharedConfig
 {
     /**
      * @var string
