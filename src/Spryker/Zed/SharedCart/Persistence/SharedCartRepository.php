@@ -170,13 +170,14 @@ class SharedCartRepository extends AbstractRepository implements SharedCartRepos
      */
     public function findShareInformationCustomer($customerReference): array
     {
-        $companyUserQuery = $this->getFactory()
-            ->createCompanyUserQuery()
+        $companyUserQuery = $this->getFactory()->createCompanyUserQuery();
+        $companyUserQuery
             ->useSpyQuoteCompanyUserQuery()
                 ->useSpyQuoteQuery()
                     ->filterByCustomerReference($customerReference)
                 ->endUse()
-            ->endUse()
+            ->endUse();
+        $companyUserQuery
             ->joinWithCustomer()
             ->joinWithSpyQuoteCompanyUser();
 
